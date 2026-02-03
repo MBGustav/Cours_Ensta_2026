@@ -12,7 +12,8 @@ size = comm.Get_size()
 
 
 def print_jolie(message: str, end:float, beg:float) -> None:
-    print(f"[RANK | {rank}] {message} = {(end-beg)*1e3:.2f} ms")
+    print(f"{size};{message};{(end-beg)*1e3:.3f}")
+    # print(f"[RANK | {rank}] {message} = {(end-beg)*1e3:.2f} ms")
 
 
 # Division
@@ -35,9 +36,10 @@ beg = time()
 for i in range(dim):
     for j in range(N_loc):
         v_local[i] += A_local[i, j] * u[rank * N_loc + j]
-end = time()
+# end = time()
 
-print_jolie("Temps calcul local", end, beg)
+# print_jolie("Temps calcul local", end, beg)
+
 
 # Réduction (somme vers le maître)
 if rank == 0:
@@ -50,4 +52,4 @@ comm.Reduce(v_local, v, op=MPI.SUM, root=0)
 # Résultat final (uniquement maître)
 if rank == 0:
     end = time()
-    print_jolie("Temp Total", end, beg)
+    print_jolie("Total", end, beg)

@@ -10,6 +10,10 @@ comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 size = comm.Get_size()
 
+
+def print_jolie(operation: str, beg: float, end: float) -> None:
+    print(f"{size};{operation};{(end-beg)*1e3:.3f}")
+
 # Mandelbrot parameters
 width, height = 1024, 1024
 scaleX = 3.0 / width
@@ -32,11 +36,6 @@ def compute_lines(y_start, y_end):
     return local_data
 
 
-def print_jolie(message: str, beg, end):
-    print(f"[RANK {rank}] {message} = {(end-beg)*1e3:.2f} ms")
-
-
-
 if rank == 0:
     convergence = np.empty((width, height), dtype=np.double)
     
@@ -49,8 +48,7 @@ if rank == 0:
         
     task_idx = 0
     finished_workers = 0
-    
-    
+
     beg = time()
     
     # Send Tasks for workers
@@ -76,11 +74,9 @@ if rank == 0:
             comm.send(None, dest=src)  # Stop sign
             finished_workers += 1
     
-    end = time()
-    print_jolie("Tempo total de execução (master)", beg, end)
     
     # Mostra imagem final
-    Image.fromarray(np.uint8(matplotlib.cm.plasma(convergence.T) * 255)).show()
+    # Image.fromarray(np.uint8(matplotlib.cm.plasma(convergence.T) * 255)).show()
 
 # ================= WORKERS =================
 else:
@@ -92,5 +88,12 @@ else:
         beg = time()
         local_result = compute_lines(y_start, y_end)
         end = time()
-        print_jolie(f"range: {y_start} to {y_end}", beg, end)   
+        # print_jolie("Calcul", beg, end)
         comm.send((y_start, y_end, local_result), dest=0)
+
+
+
+if rank == 0:
+    end = time()
+    print_jolie("Total", beg, end)
+    

@@ -12,8 +12,9 @@ rank = comm.Get_rank()
 size = comm.Get_size()
 
 
-def print_jolie(message: str, end:float, beg:float) -> None:
-    print(f"[RANK | {rank}] {message} = {(end-beg)*1e3:.2f} ms")
+def print_jolie(operation: str, end:float, beg:float) -> None:
+    print(f"{size};{operation};{(end-beg)*1e3:.3f}")
+    # print(f"[RANK | {rank}] {message} = {(end-beg)*1e3:.2f} ms")
 
 
 
@@ -44,10 +45,9 @@ for i in range(N_loc):
         sum += offset_A[j, i] * u[j]
     
     local_result[i] = sum
-end = time()
+# end = time()
 # print_jolie("Temp de Calcul", end, beg)
 
-# result[0:N_loc] = result[0:N_loc] + result
 # Master
 if rank == 0:
     result[0:N_loc] = local_result
@@ -59,10 +59,14 @@ if rank == 0:
         result[src*N_loc:(src+1)*N_loc] = tmp_result
         # print(f"[RANK | {rank}] Received from {src} : {tmp_result}")
         
-    end = time()
-    print_jolie("Temp Total", end, beg)
     # print(f"v = {result}")
 
 # Servers
 else:
     comm.Send(local_result, dest=0)
+
+
+# Résultat final (uniquement maître)
+if rank == 0:
+    end = time()
+    print_jolie("Total", end, beg)

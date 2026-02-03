@@ -6,6 +6,10 @@ from math import log
 from time import time
 import matplotlib.cm
 
+size = 1
+def print_jolie(operation: str, beg: float, end: float) -> None:
+    print(f"{size};{operation};{(end-beg)*1e3:.3f}")
+
 
 @dataclass
 class MandelbrotSet:
@@ -55,17 +59,16 @@ scaleX = 3./width
 scaleY = 2.25/height
 convergence = np.empty((width, height), dtype=np.double)
 # Calcul de l'ensemble de mandelbrot :
-deb = time()
+beg = time()
 for y in range(height):
     for x in range(width):
         c = complex(-2. + scaleX*x, -1.125 + scaleY * y)
         convergence[x, y] = mandelbrot_set.convergence(c, smooth=True)
-fin = time()
-print(f"Temps du calcul de l'ensemble de Mandelbrot : {fin-deb}")
 
-# Constitution de l'image résultante :
-deb = time()
+
+
 image = Image.fromarray(np.uint8(matplotlib.cm.plasma(convergence.T)*255))
-fin = time()
-print(f"Temps de constitution de l'image : {fin-deb}")
-image.show()
+end = time()
+print_jolie("Total(Serial)", beg, end)
+# Constitution de l'image résultante :
+# image.show()

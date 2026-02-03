@@ -2,8 +2,14 @@
 from time import time
 import numpy as np
 
+size = 1
+def print_jolie(operation: str, beg: float, end: float) -> None:
+    print(f"{size};{operation};{(end-beg)*1e3:.3f}")
+
+
 # Dimension du problème (peut-être changé)
 dim = 320
+
 # Initialisation de la matrice (un peu plus explicite...)
 A = np.zeros((dim, dim))
 beg = time()
@@ -20,5 +26,5 @@ u = np.array([i+1. for i in range(dim)])
 # Produit matrice-vecteur
 v = A.dot(u)
 end = time()
-print(f"Temp Serial = {(end-beg)*1e3:.2f} ms")
 
+print_jolie("Total(Serial)", beg, end)

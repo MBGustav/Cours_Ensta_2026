@@ -11,8 +11,11 @@ rank = comm.Get_rank()
 size = comm.Get_size()
     
 
-def print_jolie(message: str, end:float, beg:float) -> None:
-    print(f"[RANK | {rank}] {message} = {(end-beg)*1e3:.2f} ms")
+
+def print_jolie(operation: str, beg: float, end: float) -> None:
+    print(f"{size};{operation};{(end-beg)*1e3:.3f}")
+#     print(f"[RANK | {rank}] {message} = {(end-beg)*1e3:.2f} ms")
+
 
 
 
@@ -49,16 +52,13 @@ for y in range(height):
         c = complex(-2. + scaleX*(x+offset_x), -1.125 + scaleY * y)
         convergence[x, y] = mandelbrot_set.convergence(c, smooth=True)
 end = time()
-print_jolie("Temp de Calcul", end, beg)
 
-
-
+print_jolie("Calcul", beg, end) 
 
 if rank == 0: # master
  
     # store tmp data 
     tmp_convergence = np.empty((range_w, height), dtype=np.double)
-    beg = time()
     #rcv data from others(except master)
     for proc_i in range(1,size):
         comm.Recv(tmp_convergence, source=proc_i)
@@ -67,11 +67,10 @@ if rank == 0: # master
         # image = Image.fromarray(np.uint8(matplotlib.cm.plasma(tmp_convergence.T)*255)).show()
     
     end = time()
+    print_jolie("Total", beg, end)
     #show image
-    print_jolie("Temp de Reception" ,end, beg)
-    Image.fromarray(np.uint8(matplotlib.cm.plasma(convergence.T)*255)).show()
+    # Image.fromarray(np.uint8(matplotlib.cm.plasma(convergence.T)*255)).show()
     
-    print("Execution Ended")
 
 else : #workers 
     send_to = 0
@@ -79,7 +78,6 @@ else : #workers
     beg = time()
     comm.Send(convergence, send_to, 0)
     end = time()
-    print_jolie("Temp de Envoi", end, beg)
     
     
     

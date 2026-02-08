@@ -3,3 +3,7 @@
 # Bin files
 **/*.pyc 
 **/.vscode/**
+**/*/__pycache__/**
+**/*/.ipynb_checkpoints/**
+**/*.log
+

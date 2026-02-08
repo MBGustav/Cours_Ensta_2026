@@ -27,9 +27,15 @@ size = comm.Get_size()
 NUM_BUCKETS = size
 
 # Local/Global variables
-offset_values =  NUM_VALUES // size
 
-small_bucket = [np.array([]) for _ in range(NUM_BUCKETS)]
+num_subbuckets = 10 * size  # sub-buckets finos para histograma
+local_hist = np.zeros(num_subbuckets, dtype=int)
+local_bucket = [np.array([]) for _ in range(NUM_BUCKETS)]
+local_cumulative = 0
+
+local_target_per_bucket = NUM_VALUES // size
+offset_values =  NUM_VALUES // size
+global_hist = np.zeros(num_subbuckets, dtype=int)
 
 def pprint(*args, **kwargs):
     print(f"[{rank:02d}]", *args, **kwargs)
@@ -71,16 +77,51 @@ local_min = local_data.min()
 global_max = comm.allreduce(local_max, op=MPI.MAX)
 global_min = comm.allreduce(local_min, op=MPI.MIN)
 
-aux_begin = time()
-# 3.2 separate the buckets based on global_min/global_max 
+
+# IMPLEMENTATION - HISTOGRAM FOR LOAD BALANCING
+# We separe new small buckets to balance the qtd. for each bucket
+
+comm.Allreduce(local_hist, global_hist, op=MPI.SUM)
+local_bucket_limits = np.linspace(global_min, global_max, NUM_BUCKETS + 1)
+
+
+for i, count in enumerate(global_hist):    
+    local_cumulative += count
+    if local_cumulative >= local_target_per_bucket:
+        
+        limit = global_min + (i + 1)/num_subbuckets * (global_max - global_min)
+        local_bucket_limits.append(limit)
+        local_cumulative = 0
+local_bucket_limits[-1] = global_max
+
+
+
 for k in local_data:
-    # Calculate idx for separation
-    norm = (k - global_min)/(global_max - global_min) 
-    
-    idx = int(norm * NUM_BUCKETS)
-    if idx >=  NUM_BUCKETS:
-        idx = NUM_BUCKETS -1
-    small_bucket[idx] = np.append(small_bucket[idx], k)
+    idx = np.searchsorted(local_bucket_limits, k, side='right') - 1
+    if idx == NUM_BUCKETS:  # caso k == global_max
+        idx = NUM_BUCKETS - 1
+    local_hist[idx] += 1
+
+
+
+aux_begin = time()
+# 3.2 separate the buckets based on Local Histogram and the limits calculated
+
+# For each value
+for k in local_data:
+    # For each sub-bucket 
+    for idx in range(size):
+        
+        # check if the value belongs to the bucket
+        if local_bucket_limits[idx] <= k < local_bucket_limits[idx+1]:
+            local_bucket[idx] = np.append(local_bucket[idx], k)
+            break
+        
+        # Handle edge case for the maximum value
+        elif idx == size - 1 and k == global_max:
+            local_bucket[idx] = np.append(local_bucket[idx], k)
+
+
 
 
 # Each processor sends its bucket[i] to processor i
@@ -90,10 +131,10 @@ for i in range(NUM_BUCKETS):
         for p in range(size):
             if p != rank:
                 received = comm.recv(source=p)
-                small_bucket[i] = np.append(small_bucket[i], received)
+                local_bucket[i] = np.append(local_bucket[i], received)
     else:
         # Send this bucket to processor i
-        comm.send(small_bucket[i], dest=i)
+        comm.send(local_bucket[i], dest=i)
 
 # Synchronize all processes
 comm.Barrier()
@@ -102,7 +143,7 @@ print_jolie("bucket-transfer" , time(), aux_begin)
 
 # 4. Local Ordenation
 aux_begin = time()
-sorted_bucket = np.sort(small_bucket[rank])
+sorted_bucket = np.sort(local_bucket[rank])
 print_jolie("local-sort" , time(), aux_begin)
 
 
@@ -127,8 +168,8 @@ comm.Gatherv(
     root=0
 )
 
-print_jolie("Total" , time(), code_begin)
+print_jolie("Total(histogram)" , time(), code_begin)
     
 # zprint("Sorted data:", sorted_data)
 # if rank == 0:
-#     print("Is the data sorted?", check_sorted(sorted_data))
+    # print("Is the data sorted?", check_sorted(sorted_data))

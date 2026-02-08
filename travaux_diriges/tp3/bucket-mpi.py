@@ -25,6 +25,11 @@ NUM_VALUES = size*1000
 RAND_SEED  = 42
 DATA_TYPE = np.double
 
+# Local/Global variables
+offset_values =  NUM_VALUES // size
+
+small_bucket = [np.array([]) for _ in range(NUM_BUCKETS)]
+
 def check_sorted(arr):
     return np.all(arr[:-1] <= arr[1:])
 
@@ -36,39 +41,20 @@ def zprint(*args, **kwargs):
         pprint(*args, **kwargs)
 
 def generate_random_values(size: int) -> list:
-    data = np.random.default_rng(seed=RAND_SEED).integers(0, 100, NUM_VALUES)
+    data = np.random.default_rng(seed=RAND_SEED).random(size)*1000
     data = data.astype(np.double)
     return data
-
-
-
-
-# in this moment we consider they receive all the same value
-
-
-# Local/Global variables
-offset_values =  NUM_VALUES // size
-global_max = None
-global_min = None
-
-small_bucket = [np.array([]) for _ in range(NUM_BUCKETS)]
-
 
 
 # 1) Generate random data
 if rank == 0:
     # generate the array unsorted
     data = generate_random_values(NUM_VALUES)
-    
-    global_max = data.max()
-    global_min = data.min()
-    # print(f"extremes = ({global_min}, {global_max})", data )
-    
 else:
     data = None
-    
-# 2) Send data to the others processors
 
+
+# 2) Send data to the others processors
 if rank == 0:
     
     for p in range(1, size):
@@ -82,14 +68,15 @@ else:
     local_data = np.empty(offset_values, dtype=np.double)
     comm.Recv(local_data, source=0)
 
+
 # 3) give back the values to the expected buckets
-#TODO: use REDUCEAll/Reduce
-global_max = comm.bcast(global_max, root=0)
-global_min = comm.bcast(global_min, root=0)
+# 3.1 find global max and min
+local_max = local_data.max()
+local_min = local_data.min()
+global_max = comm.allreduce(local_max, op=MPI.MAX)
+global_min = comm.allreduce(local_min, op=MPI.MIN)
 
-
-# print(f"Rank {rank} = {local_data}, with {global_min} | {global_max}")
-
+# 3.2 separate the buckets based on global_min/global_max 
 for k in local_data:
     # Calculate idx for separation
     norm = (k - global_min)/(global_max - global_min) 
@@ -98,8 +85,6 @@ for k in local_data:
     if idx >=  NUM_BUCKETS:
         idx = NUM_BUCKETS -1
     small_bucket[idx] = np.append(small_bucket[idx], k)
-
-
 
 # Each processor sends its bucket[i] to processor i
 for i in range(NUM_BUCKETS):
@@ -113,35 +98,28 @@ for i in range(NUM_BUCKETS):
         # Send this bucket to processor i
         comm.send(small_bucket[i], dest=i)
 
-
 # Synchronize all processes
 comm.Barrier()
-# print(small_bucket)
+
 
 # 4. Local Ordenation
-small_bucket[rank].sort()
-
-sorted_bucket = small_bucket[rank]
-
-pprint(f"Bucket {rank} has size {len(small_bucket[rank])} and data:\n {sorted_bucket} \n")
-
+sorted_bucket = np.sort(small_bucket[rank])
 
 # 4.1 Gather the size of each bucket at each rank
-bucket_sizes = np.zeros(size, dtype=int)
-comm.Allgather(np.array(len(sorted_bucket), dtype=int), bucket_sizes)
-displacements = np.zeros(size, dtype=int)
-displacements[1:] = np.cumsum(bucket_sizes[:-1])
+bucket_sizes = np.zeros(size, dtype=int) # local array for each bucket
+comm.Allgather(np.array(len(sorted_bucket), dtype=int), bucket_sizes) # Gather the size of each bucket at each rank
+displacements = np.zeros(size, dtype=int) # calc displacements for Gatherv
+displacements[1:] = np.cumsum(bucket_sizes[:-1]) # offset for the 1st element
 
 
 # 5. Send back to rank = 0
 if rank == 0:
-    # Prepare the buffer to receive the sorted data
-    sorted_data = np.empty(NUM_VALUES, dtype=np.double)   
+    sorted_data = np.empty(NUM_VALUES, dtype=np.double)
 else:
-    sorted_data = None  # Initialize sorted_data for other ranks
+    sorted_data = None # Initialize sorted_data for other ranks
 
 
-# Gather the sorted buckets from all processors   
+#6. Gather the sorted buckets from all processors   
 comm.Gatherv(
     [sorted_bucket, len(sorted_bucket), MPI.DOUBLE],  # Local sorted bucket
     [sorted_data, bucket_sizes, displacements, MPI.DOUBLE],  # Buffer to receive sorted data, sizes, displacements, and data type
@@ -151,6 +129,3 @@ comm.Gatherv(
 zprint("Sorted data:", sorted_data)
 if rank == 0:
     print("Is the data sorted?", check_sorted(sorted_data))
-
-
-

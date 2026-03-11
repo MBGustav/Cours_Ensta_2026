@@ -1,9 +1,40 @@
-
-
 # Bin files
 **/*.pyc 
 **/.vscode/**
 **/*/__pycache__/**
 **/*/.ipynb_checkpoints/**
 **/*.log
+**/*.o
+**/*.exe
+**/*.out
+**/*.class
+**/*.so
+**/*.dll
+**/*.data
 
+
+# LaTeX files
+**/*.aux
+**/*.lof
+**/*.lot
+**/*.fls
+**/*.out
+**/*.toc
+**/*.fmt
+**/*.fot
+**/*.cbl
+**/*.cbx
+**/*.bbl
+**/*.bcf
+**/*.blg
+**/*.run.xml
+**/*.synctex.gz
+**/*.fdb_latexmk
+**/*.synctex.gz
+**/*.nav
+**/*.snm
+**/*.vrb
+**/*.idx
+**/*.ilg
+**/*.ind
+**/*.log

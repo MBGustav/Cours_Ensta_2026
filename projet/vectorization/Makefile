@@ -4,8 +4,8 @@ include Make_linux.inc
 
 CXXFLAGS = -std=c++17
 ifdef DEBUG
-CXXFLAGS += -g -O0 -Wall -fbounds-check -pedantic -D_GLIBCXX_DEBUG
-CXXFLAGS2 = CXXFLAGS
+CXXFLAGS += -pg -O0 -Wall -fbounds-check -pedantic -D_GLIBCXX_DEBUG
+CXXFLAGS2 = $(CXXFLAGS)
 else
 CXXFLAGS2 = ${CXXFLAGS} -O2 -march=native -Wall 
 CXXFLAGS += -O3 -march=native -Wall
@@ -33,6 +33,13 @@ help:
 	@echo "Configuration :"
 	@echo "    CXX      :    $(CXX)"
 	@echo "    CXXFLAGS :    $(CXXFLAGS)"
+
+profile: ant_simu.exe
+	@echo "Running with profile..."
+	@./ant_simu.exe
+
+	valgrind --tool=callgrind --dump-instr=yes --simulate-cache=yes --collect-jumps=yes --callgrind-out-file=ant_result.out ./ant_simu.exe
+
 
 %.html: %.md
 	pandoc -s --toc $< --css=./github-pandoc.css --metadata pagetitle="OS202 - TD1" -o $@

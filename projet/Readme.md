@@ -15,7 +15,7 @@ comportement de fourmis réelles ) résout efficacement le problème de fourrage
 Dans cette partie, nous allons décrire un modèle simple de colonies de fourmis qui permet de résoudre le problème de fourragement.
 Il a été montré pour cette algorithme qu'il converge de façon sur-linéaire par rapport au nombre de fourmis.
 
-### Description du modèle
+### Description du modèle   
 
 On considère un terrain représenté par une grille cartésienne 2D, dont chaque cellule comporte une valeur donnant l'unité de temps pour la traverser ( valeur comprise entre zéro et un ).
 On considère un ensemble de $m$ fourmis artificielles qui évoluent sur ces cellules et sur lesquelles elles mettent à jour des "taux de phéromones". Chaque cellule $s$ de la grille stocke en plus deux valeurs réelles, correspondant à deux types de phéromones : un phéromone

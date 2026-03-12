@@ -8,12 +8,23 @@
 # include "window.hpp"
 # include "rand_generator.hpp"
 
+
+constexpr size_t total_iterations = 500;
+
 void advance_time( const fractal_land& land, pheronome& phen, 
                    const position_t& pos_nest, const position_t& pos_food,
                    std::vector<ant>& ants, std::size_t& cpteur )
 {
-    for ( size_t i = 0; i < ants.size(); ++i )
-        ants[i].advance(phen, land, pos_food, pos_nest, cpteur);
+    const size_t nb_ants = ants.size();
+
+    // CHANGE: using reduction locally
+    size_t local_cpteur = 0; 
+    // #pragma GCC unroll 4 /*unrolling with GCC (a way more clean)*/
+    #pragma omp parallel for reduction(+:local_cpteur)
+    for ( size_t i = 0; i < nb_ants; ++i )
+        ants[i].advance(phen, land, pos_food, pos_nest, local_cpteur);
+    cpteur += local_cpteur;
+
     phen.do_evaporation();
     phen.update();
 }
@@ -21,12 +32,13 @@ void advance_time( const fractal_land& land, pheronome& phen,
 int main(int nargs, char* argv[])
 {
     SDL_Init( SDL_INIT_VIDEO );
-    std::size_t seed = 2026; // Graine pour la génération aléatoire ( reproductible )
-    const int nb_ants = 5000; // Nombre de fourmis
-    const double eps = 0.8;  // Coefficient d'exploration
-    const double alpha=0.7; // Coefficient de chaos
+    std::size_t seed = 2026;    // Graine pour la génération aléatoire ( reproductible )
+    const int nb_ants = 5000;   // Nombre de fourmis
+    const double eps = 0.8;     // Coefficient d'exploration
+    const double alpha=0.7;     // Coefficient de chaos
     //const double beta=0.9999; // Coefficient d'évaporation
-    const double beta=0.999; // Coefficient d'évaporation
+    const double beta=0.999;    // Coefficient d'évaporation
+    
     // Location du nid
     position_t pos_nest{256,256};
     // Location de la nourriture
@@ -80,6 +92,9 @@ int main(int nargs, char* argv[])
             std::cout << "La première nourriture est arrivée au nid a l'iteration " << it << std::endl;
             not_food_in_nest = false;
         }
+        
+
+        if ( it == total_iterations) cont_loop = false;
         //SDL_Delay(10);
     }
     SDL_Quit();

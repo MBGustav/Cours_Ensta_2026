@@ -3,12 +3,16 @@ include Make_linux.inc
 #include Make_osx.inc
 
 CXXFLAGS = -std=c++17
+EXEC=ant_simu.exe
+
+export PATH := $(PATH):/home/mgustav/git-repos/FlameGraph
+
 ifdef DEBUG
 CXXFLAGS += -pg -O0 -Wall -fbounds-check -pedantic -D_GLIBCXX_DEBUG
 CXXFLAGS2 = $(CXXFLAGS)
 else
 CXXFLAGS2 = ${CXXFLAGS} -O2 -march=native -Wall 
-CXXFLAGS += -O3 -march=native -Wall
+CXXFLAGS += -g -O3 -march=native -Wall
 endif
 
 ALL= ant_simu.exe 
@@ -34,12 +38,43 @@ help:
 	@echo "    CXX      :    $(CXX)"
 	@echo "    CXXFLAGS :    $(CXXFLAGS)"
 
-profile: ant_simu.exe
-	@echo "Running with profile..."
-	@./ant_simu.exe
+profile: $(EXEC)
+	@echo "Running program with perf..."
+	sudo perf record -g -- ./$(EXEC)
+	sudo perf script 							 	| \
+		 c++filt 							     	| \
+		 gprof2dot -f perf -n 5.0 --show-samples 	| \
+		 dot -Tpng -o output.png
 
-	valgrind --tool=callgrind --dump-instr=yes --simulate-cache=yes --collect-jumps=yes --callgrind-out-file=ant_result.out ./ant_simu.exe
+profile_fg: $(EXEC)
+	@echo "Clean old data..."
+	rm -f perf.data flamegraph.svg
+	@echo "Rodando perf (apenas user-space para evitar syscalls)..."
+	sudo perf record -g -F 99 -- ./$(EXEC)
+	
+	@echo "Processing Flamegraph..."
+	sudo perf script                 | \
+	stackcollapse-perf.pl            | \
+	flamegraph.pl --inverted --minwidth=2 > flamegraph.svg
 
+
+timechart: $(EXEC)
+	@echo "Cleaning previous data..."
+	sudo rm -f perf.data timechart.svg
+	
+	@echo "System Permissions..."
+	sudo sysctl -w kernel.perf_event_paranoid=-1
+	sudo sysctl -w kernel.kptr_restrict=0
+	
+	sudo perf record -e sched:sched_switch -e sched:sched_wakeup -- ./$(EXEC)
+	
+	@echo "Generating timechart..."
+	# IMPORTANTE: Geramos o timechart e alteramos o dono do arquivo 
+	# para que você possa abri-lo sem ser root (evita erro de leitura).
+	sudo perf timechart -o timechart.svg
+	sudo chmod 644 timechart.svg
+	sudo chown $(USER):$(USER) timechart.svg
+	@echo "-----------------------------------------------------------"
 
 %.html: %.md
 	pandoc -s --toc $< --css=./github-pandoc.css --metadata pagetitle="OS202 - TD1" -o $@

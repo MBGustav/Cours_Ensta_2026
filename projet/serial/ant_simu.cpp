@@ -8,6 +8,8 @@
 # include "window.hpp"
 # include "rand_generator.hpp"
 
+constexpr size_t total_iterations = 500;
+
 void advance_time( const fractal_land& land, pheronome& phen, 
                    const position_t& pos_nest, const position_t& pos_food,
                    std::vector<ant>& ants, std::size_t& cpteur )
@@ -81,6 +83,8 @@ int main(int nargs, char* argv[])
             std::cout << "La première nourriture est arrivée au nid a l'iteration " << it << std::endl;
             not_food_in_nest = false;
         }
+
+        if ( it == total_iterations) cont_loop = false;
         //SDL_Delay(10);
     }
     SDL_Quit();

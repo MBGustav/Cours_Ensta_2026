@@ -22,7 +22,7 @@ default:	help
 all: $(ALL)
 
 clean:
-	@rm -fr *.o *.exe *~ *.out *.data *.data.*
+	@rm -fr *.o *.exe *~ *.out *.data *.data.* 
 .cpp.o:
 	$(CXX) $(CXXFLAGS2) -c $^ -o $@	
 

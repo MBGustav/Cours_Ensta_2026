@@ -12,6 +12,7 @@ void advance_time( const fractal_land& land, pheronome& phen,
                    const position_t& pos_nest, const position_t& pos_food,
                    std::vector<ant>& ants, std::size_t& cpteur )
 {
+    
     for ( size_t i = 0; i < ants.size(); ++i )
         ants[i].advance(phen, land, pos_food, pos_nest, cpteur);
     phen.do_evaporation();

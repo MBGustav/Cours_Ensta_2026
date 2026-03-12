@@ -38,7 +38,13 @@ help:
 profile: $(EXEC)
 	@echo "Running program with perf..."
 	sudo perf record -g -- ./$(EXEC)
-	sudo perf script | c++filt | gprof2dot -f perf -n 20.0 | dot -Tpng -o output.png
+	sudo perf script | c++filt | gprof2dot -f perf -n 20.0 --show-samples | dot -Tpng -o output.png
+
+profile_fg: $(EXEC)
+	@echo "Running program with flamegraph..."
+	sudo perf record -g -- ./$(EXEC)
+	sudo perf script --max-stack 10 | stackcollapse-perf.pl | grep -v '\[unknown\]' | flamegraph.pl --inverted > flamegraph.svg
+	@echo "Flamegraph saved to flamegraph.svg"
 
 
 %.html: %.md

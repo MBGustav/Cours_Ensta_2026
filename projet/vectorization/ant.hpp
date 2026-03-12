@@ -36,4 +36,11 @@ private:
     position_t m_position;
 };
 
+
+
+void advance(pheronome& phen, const fractal_land& land, const position_t& pos_food, const position_t& pos_nest,
+             std::vector<int>& ants_x, std::vector<int>& ants_y, std::vector<ant::state>& ants_state,
+             std::vector<uint32_t>& ants_seeds, // Cada formiga tem sua semente!
+             std::size_t& cpteur_food, double m_eps) ;
+
 #endif

@@ -2,7 +2,7 @@ include Make_linux.inc
 #include Make_msys2.inc
 #include Make_osx.inc
 
-CXXFLAGS = -std=c++17
+CXXFLAGS = -std=c++17 -fno-omit-frame-pointer
 EXEC=ant_simu.exe
 
 export PATH := $(PATH):/home/mgustav/git-repos/FlameGraph
@@ -22,8 +22,7 @@ default:	help
 all: $(ALL)
 
 clean:
-	@rm -fr *.o *.exe *~
-
+	@rm -fr *.o *.exe *~ *.out *.data *.data.*
 .cpp.o:
 	$(CXX) $(CXXFLAGS2) -c $^ -o $@	
 
@@ -38,22 +37,23 @@ help:
 	@echo "    CXX      :    $(CXX)"
 	@echo "    CXXFLAGS :    $(CXXFLAGS)"
 
-profile: $(EXEC)
+perf.data: $(EXEC)
+	sudo rm -f perf.data timechart.svg
 	@echo "Running program with perf..."
-	sudo perf record -g -- ./$(EXEC)
+	sudo perf record -g -F 999 -- ./$(EXEC)
+
+profile: perf.data
+	@echo "Running program with perf..."
 	sudo perf script 							 	| \
 		 c++filt 							     	| \
-		 gprof2dot -f perf -n 5.0 --show-samples 	| \
+		 grep -vE 'libgomp|pthread|libc|linux|\[.*\]' | \
+		 gprof2dot -f perf --show-samples 	| \
 		 dot -Tpng -o output.png
 
-profile_fg: $(EXEC)
-	@echo "Clean old data..."
-	rm -f perf.data flamegraph.svg
-	@echo "Rodando perf (apenas user-space para evitar syscalls)..."
-	sudo perf record -g -F 99 -- ./$(EXEC)
-	
+profile_fg: perf.data
 	@echo "Processing Flamegraph..."
 	sudo perf script                 | \
+	grep -vE 'libgomp|libc|\[.*\]'   | \
 	stackcollapse-perf.pl            | \
 	flamegraph.pl --inverted --minwidth=2 > flamegraph.svg
 

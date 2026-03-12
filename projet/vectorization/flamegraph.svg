@@ -1,6 +1,6 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" width="1200" height="310" onload="init(evt)" viewBox="0 0 1200 310" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg version="1.1" width="1200" height="150" onload="init(evt)" viewBox="0 0 1200 150" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <!-- Flame graph stack visualization. See https://github.com/brendangregg/FlameGraph for latest version, and http://www.brendangregg.com/flamegraphs.html for examples. -->
 <!-- NOTES:  -->
 <defs>
@@ -422,169 +422,41 @@
 	}
 ]]>
 </script>
-<rect x="0.0" y="0" width="1200.0" height="310.0" fill="url(#background)"  />
+<rect x="0.0" y="0" width="1200.0" height="150.0" fill="url(#background)"  />
 <text id="title" x="600.00" y="24" >Icicle Graph</text>
-<text id="details" x="10.00" y="293" > </text>
+<text id="details" x="10.00" y="133" > </text>
 <text id="unzoom" x="10.00" y="24" class="hide">Reset Zoom</text>
 <text id="search" x="1090.00" y="24" >Search</text>
 <text id="ignorecase" x="1174.00" y="24" >ic</text>
-<text id="matched" x="1090.00" y="293" > </text>
+<text id="matched" x="1090.00" y="133" > </text>
 <g id="frames">
 <g >
-<title>[libSDL2-2.0.so.0.3000.0] (577,715,489 samples, 0.27%)</title><rect x="18.1" y="164" width="3.1" height="15.0" fill="rgb(227,102,24)" rx="2" ry="2" />
-<text  x="21.08" y="174.5" ></text>
+<title>main (5,131,014,883 samples, 2.28%)</title><rect x="1161.2" y="84" width="26.9" height="15.0" fill="rgb(243,179,42)" rx="2" ry="2" />
+<text  x="1164.16" y="94.5" >m..</text>
 </g>
 <g >
-<title>__sysvec_apic_timer_interrupt (614,026,173 samples, 0.28%)</title><rect x="1172.7" y="148" width="3.3" height="15.0" fill="rgb(242,173,41)" rx="2" ry="2" />
-<text  x="1175.70" y="158.5" ></text>
+<title>advance (1,583,399,551 samples, 0.70%)</title><rect x="1161.6" y="100" width="8.3" height="15.0" fill="rgb(249,204,48)" rx="2" ry="2" />
+<text  x="1164.61" y="110.5" ></text>
 </g>
 <g >
-<title>Renderer::display (1,824,444,147 samples, 0.84%)</title><rect x="11.6" y="116" width="9.9" height="15.0" fill="rgb(251,212,50)" rx="2" ry="2" />
-<text  x="14.59" y="126.5" ></text>
+<title>advance_time (3,386,678,433 samples, 1.50%)</title><rect x="1169.9" y="100" width="17.8" height="15.0" fill="rgb(251,214,51)" rx="2" ry="2" />
+<text  x="1172.91" y="110.5" ></text>
 </g>
 <g >
-<title>start_thread (201,761,848,596 samples, 92.91%)</title><rect x="83.2" y="84" width="1096.4" height="15.0" fill="rgb(212,34,8)" rx="2" ry="2" />
-<text  x="86.23" y="94.5" >start_thread</text>
-</g>
-<g >
-<title>[libgomp.so.1.0.0] (21,314,245,107 samples, 9.82%)</title><rect x="1050.0" y="116" width="115.8" height="15.0" fill="rgb(220,71,17)" rx="2" ry="2" />
-<text  x="1052.96" y="126.5" >[libgomp.so.1...</text>
-</g>
-<g >
-<title>sysvec_apic_timer_interrupt (1,073,798,730 samples, 0.49%)</title><rect x="1172.7" y="132" width="5.8" height="15.0" fill="rgb(220,69,16)" rx="2" ry="2" />
-<text  x="1175.70" y="142.5" ></text>
-</g>
-<g >
-<title>_regmap_read (454,322,340 samples, 0.21%)</title><rect x="1167.5" y="244" width="2.5" height="15.0" fill="rgb(216,51,12)" rx="2" ry="2" />
-<text  x="1170.52" y="254.5" ></text>
-</g>
-<g >
-<title>asm_sysvec_apic_timer_interrupt (1,118,371,239 samples, 0.52%)</title><rect x="1172.5" y="116" width="6.0" height="15.0" fill="rgb(232,127,30)" rx="2" ry="2" />
-<text  x="1175.45" y="126.5" ></text>
-</g>
-<g >
-<title>[libgomp.so.1.0.0] (2,931,101,786 samples, 1.35%)</title><rect x="66.8" y="116" width="16.0" height="15.0" fill="rgb(220,71,17)" rx="2" ry="2" />
-<text  x="69.83" y="126.5" ></text>
-</g>
-<g >
-<title>[unknown] (1,879,028,027 samples, 0.87%)</title><rect x="11.6" y="100" width="10.2" height="15.0" fill="rgb(210,24,5)" rx="2" ry="2" />
-<text  x="14.59" y="110.5" ></text>
-</g>
-<g >
-<title>__common_interrupt (1,109,305,062 samples, 0.51%)</title><rect x="1166.1" y="148" width="6.0" height="15.0" fill="rgb(237,150,36)" rx="2" ry="2" />
-<text  x="1169.09" y="158.5" ></text>
-</g>
-<g >
-<title>hrtimer_interrupt (614,026,173 samples, 0.28%)</title><rect x="1172.7" y="164" width="3.3" height="15.0" fill="rgb(228,109,26)" rx="2" ry="2" />
-<text  x="1175.70" y="174.5" ></text>
-</g>
-<g >
-<title>[unknown] (1,939,640,437 samples, 0.89%)</title><rect x="11.6" y="84" width="10.5" height="15.0" fill="rgb(210,24,5)" rx="2" ry="2" />
-<text  x="14.59" y="94.5" ></text>
-</g>
-<g >
-<title>[libgomp.so.1.0.0] (1,792,759,282 samples, 0.83%)</title><rect x="57.1" y="132" width="9.7" height="15.0" fill="rgb(220,71,17)" rx="2" ry="2" />
-<text  x="60.09" y="142.5" ></text>
-</g>
-<g >
-<title>all (217,146,932,018 samples, 100%)</title><rect x="10.0" y="36" width="1180.0" height="15.0" fill="rgb(213,39,9)" rx="2" ry="2" />
-<text  x="13.00" y="46.5" ></text>
-</g>
-<g >
-<title>handle_irq_event (951,700,771 samples, 0.44%)</title><rect x="1166.6" y="180" width="5.2" height="15.0" fill="rgb(209,19,4)" rx="2" ry="2" />
-<text  x="1169.59" y="190.5" ></text>
-</g>
-<g >
-<title>__handle_irq_event_percpu (923,252,285 samples, 0.43%)</title><rect x="1166.6" y="196" width="5.0" height="15.0" fill="rgb(236,147,35)" rx="2" ry="2" />
-<text  x="1169.59" y="206.5" ></text>
-</g>
-<g >
-<title>dw_reg_read (454,322,340 samples, 0.21%)</title><rect x="1167.5" y="260" width="2.5" height="15.0" fill="rgb(205,3,0)" rx="2" ry="2" />
-<text  x="1170.52" y="270.5" ></text>
-</g>
-<g >
-<title>common_interrupt (1,170,388,122 samples, 0.54%)</title><rect x="1166.1" y="132" width="6.4" height="15.0" fill="rgb(215,46,11)" rx="2" ry="2" />
-<text  x="1169.09" y="142.5" ></text>
-</g>
-<g >
-<title>[libSDL2-2.0.so.0.3000.0] (820,252,633 samples, 0.38%)</title><rect x="16.9" y="148" width="4.4" height="15.0" fill="rgb(227,102,24)" rx="2" ry="2" />
-<text  x="19.88" y="158.5" ></text>
-</g>
-<g >
-<title>pheronome::do_evaporation (1,665,638,271 samples, 0.77%)</title><rect x="1179.6" y="68" width="9.1" height="15.0" fill="rgb(251,215,51)" rx="2" ry="2" />
-<text  x="1182.63" y="78.5" ></text>
-</g>
-<g >
-<title>__hrtimer_run_queues (532,386,305 samples, 0.25%)</title><rect x="1172.7" y="180" width="2.9" height="15.0" fill="rgb(237,150,35)" rx="2" ry="2" />
-<text  x="1175.70" y="190.5" ></text>
-</g>
-<g >
-<title>handle_fasteoi_irq (1,025,316,667 samples, 0.47%)</title><rect x="1166.4" y="164" width="5.6" height="15.0" fill="rgb(210,26,6)" rx="2" ry="2" />
-<text  x="1169.42" y="174.5" ></text>
-</g>
-<g >
-<title>tick_nohz_handler (465,088,656 samples, 0.21%)</title><rect x="1172.9" y="196" width="2.5" height="15.0" fill="rgb(248,200,48)" rx="2" ry="2" />
-<text  x="1175.87" y="206.5" ></text>
-</g>
-<g >
-<title>asm_common_interrupt (1,170,388,122 samples, 0.54%)</title><rect x="1166.1" y="116" width="6.4" height="15.0" fill="rgb(227,105,25)" rx="2" ry="2" />
-<text  x="1169.09" y="126.5" ></text>
-</g>
-<g >
-<title>GOMP_parallel (1,792,759,282 samples, 0.83%)</title><rect x="57.1" y="116" width="9.7" height="15.0" fill="rgb(208,14,3)" rx="2" ry="2" />
-<text  x="60.09" y="126.5" ></text>
-</g>
-<g >
-<title>[libgomp.so.1.0.0] (201,761,848,596 samples, 92.91%)</title><rect x="83.2" y="100" width="1096.4" height="15.0" fill="rgb(220,71,17)" rx="2" ry="2" />
-<text  x="86.23" y="110.5" >[libgomp.so.1.0.0]</text>
-</g>
-<g >
-<title>update_process_times (465,088,656 samples, 0.21%)</title><rect x="1172.9" y="212" width="2.5" height="15.0" fill="rgb(250,209,50)" rx="2" ry="2" />
-<text  x="1175.87" y="222.5" ></text>
-</g>
-<g >
-<title>advance_time (4,753,957,912 samples, 2.19%)</title><rect x="57.1" y="100" width="25.8" height="15.0" fill="rgb(251,214,51)" rx="2" ry="2" />
-<text  x="60.09" y="110.5" >a..</text>
-</g>
-<g >
-<title>main (5,000,189,731 samples, 2.30%)</title><rect x="55.7" y="84" width="27.2" height="15.0" fill="rgb(243,179,42)" rx="2" ry="2" />
-<text  x="58.75" y="94.5" >m..</text>
-</g>
-<g >
-<title>i2c_dw_isr (625,560,720 samples, 0.29%)</title><rect x="1166.6" y="212" width="3.4" height="15.0" fill="rgb(223,82,19)" rx="2" ry="2" />
-<text  x="1169.59" y="222.5" ></text>
-</g>
-<g >
-<title>clone3 (201,761,848,596 samples, 92.91%)</title><rect x="83.2" y="68" width="1096.4" height="15.0" fill="rgb(216,54,12)" rx="2" ry="2" />
-<text  x="86.23" y="78.5" >clone3</text>
-</g>
-<g >
-<title>ant_simu.exe (216,903,498,412 samples, 99.89%)</title><rect x="10.0" y="52" width="1178.7" height="15.0" fill="rgb(254,229,54)" rx="2" ry="2" />
+<title>ant_simu.exe (224,683,254,305 samples, 99.84%)</title><rect x="10.0" y="52" width="1178.2" height="15.0" fill="rgb(254,229,54)" rx="2" ry="2" />
 <text  x="13.00" y="62.5" >ant_simu.exe</text>
 </g>
 <g >
-<title>regmap_read (454,322,340 samples, 0.21%)</title><rect x="1167.5" y="228" width="2.5" height="15.0" fill="rgb(229,114,27)" rx="2" ry="2" />
-<text  x="1170.52" y="238.5" ></text>
+<title>all (225,034,675,248 samples, 100%)</title><rect x="10.0" y="36" width="1180.0" height="15.0" fill="rgb(213,39,9)" rx="2" ry="2" />
+<text  x="13.00" y="46.5" ></text>
 </g>
 <g >
-<title>sched_tick (434,965,017 samples, 0.20%)</title><rect x="1173.0" y="228" width="2.4" height="15.0" fill="rgb(238,155,37)" rx="2" ry="2" />
-<text  x="1176.04" y="238.5" ></text>
+<title>_start (5,438,412,443 samples, 2.42%)</title><rect x="1159.5" y="68" width="28.6" height="15.0" fill="rgb(245,185,44)" rx="2" ry="2" />
+<text  x="1162.55" y="78.5" >_s..</text>
 </g>
 <g >
-<title>ant::advance (6,170,821,306 samples, 2.84%)</title><rect x="22.2" y="84" width="33.5" height="15.0" fill="rgb(213,39,9)" rx="2" ry="2" />
-<text  x="25.22" y="94.5" >an..</text>
-</g>
-<g >
-<title>[unknown] (13,126,801,443 samples, 6.05%)</title><rect x="11.6" y="68" width="71.3" height="15.0" fill="rgb(210,24,5)" rx="2" ry="2" />
-<text  x="14.59" y="78.5" >[unknown]</text>
-</g>
-<g >
-<title>[libSDL2-2.0.so.0.3000.0] (897,245,883 samples, 0.41%)</title><rect x="16.5" y="132" width="4.8" height="15.0" fill="rgb(227,102,24)" rx="2" ry="2" />
-<text  x="19.46" y="142.5" ></text>
-</g>
-<g >
-<title>[libgomp.so.1.0.0] (2,931,101,786 samples, 1.35%)</title><rect x="66.8" y="132" width="16.0" height="15.0" fill="rgb(220,71,17)" rx="2" ry="2" />
-<text  x="69.83" y="142.5" ></text>
+<title>Renderer::display (2,332,234,188 samples, 1.04%)</title><rect x="1147.0" y="68" width="12.3" height="15.0" fill="rgb(251,212,50)" rx="2" ry="2" />
+<text  x="1150.03" y="78.5" ></text>
 </g>
 </g>
 </svg>

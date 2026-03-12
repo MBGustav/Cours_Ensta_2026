@@ -8,23 +8,18 @@
 # include "window.hpp"
 # include "rand_generator.hpp"
 
-
+static double eps = 0.8;  // Coefficient d'exploration
 constexpr size_t total_iterations = 500;
 
 void advance_time( const fractal_land& land, pheronome& phen, 
                    const position_t& pos_nest, const position_t& pos_food,
-                   std::vector<ant>& ants, std::size_t& cpteur )
+                   std::vector<int>& ants_x, 
+                   std::vector<int>& ants_y, 
+                   std::vector<ant::state>& ants_state, std::vector<uint32_t>& ants_seeds, std::size_t& cpteur )
 {
-    const size_t nb_ants = ants.size();
-
+    const size_t nb_ants = ants_x.size();
     // CHANGE: using reduction locally
-    size_t local_cpteur = 0; 
-    // #pragma GCC unroll 4 /*unrolling with GCC (a way more clean)*/
-    #pragma omp parallel for reduction(+:local_cpteur)
-    for ( size_t i = 0; i < nb_ants; ++i )
-        ants[i].advance(phen, land, pos_food, pos_nest, local_cpteur);
-    cpteur += local_cpteur;
-
+    advance(phen, land, pos_food, pos_nest,ants_x, ants_y, ants_state, ants_seeds, cpteur, eps);
     phen.do_evaporation();
     phen.update();
 }
@@ -63,16 +58,32 @@ int main(int nargs, char* argv[])
     // Définition du coefficient d'exploration de toutes les fourmis.
     ant::set_exploration_coef(eps);
     // On va créer des fourmis un peu partout sur la carte :
-    std::vector<ant> ants;
-    ants.reserve(nb_ants);
+    
+
+    // CHANGE: using Struc of Arrays
+    // std::vector<ant> ants;
+    // ants.reserve(nb_ants);
+    
+    std::vector<int> ants_x(nb_ants);
+    std::vector<int> ants_y(nb_ants);
+    std::vector<ant::state> ants_state(nb_ants);
+    std::vector<uint32_t> ants_seeds(nb_ants);
+
+
     auto gen_ant_pos = [&land, &seed] () { return rand_int32(0, land.dimensions()-1, seed); };
-    for ( size_t i = 0; i < nb_ants; ++i )
-        ants.emplace_back(position_t{gen_ant_pos(),gen_ant_pos()}, seed);
+    for ( size_t i = 0; i < nb_ants; ++i ){
+        // ants.emplace_back(position_t{gen_ant_pos(),gen_ant_pos()}, seed);
+        position_t pos{gen_ant_pos(), gen_ant_pos()};
+        ants_x[i] = pos.x;
+        ants_y[i] = pos.y;
+        ants_state[i] = ant::unloaded;
+        ants_seeds[i] = seed;
+    }
     // On crée toutes les fourmis dans la fourmilière.
     pheronome phen(land.dimensions(), pos_food, pos_nest, alpha, beta);
 
     Window win("Ant Simulation", 2*land.dimensions()+10, land.dimensions()+266);
-    Renderer renderer( land, phen, pos_nest, pos_food, ants );
+    Renderer renderer(land, phen, pos_nest, pos_food, ants_x, ants_y);
     // Compteur de la quantité de nourriture apportée au nid par les fourmis
     size_t food_quantity = 0;
     SDL_Event event;
@@ -85,7 +96,7 @@ int main(int nargs, char* argv[])
             if (event.type == SDL_QUIT)
                 cont_loop = false;
         }
-        advance_time( land, phen, pos_nest, pos_food, ants, food_quantity );
+        advance_time( land, phen, pos_nest, pos_food, ants_x, ants_y, ants_state, ants_seeds, food_quantity );
         renderer.display( win, food_quantity );
         win.blit();
         if ( not_food_in_nest && food_quantity > 0 ) {

@@ -6,6 +6,7 @@
 # include "fractal_land.hpp"
 # include "basic_types.hpp"
 
+
 class ant
 {
 public:
@@ -43,4 +44,5 @@ void advance(pheronome& phen, const fractal_land& land, const position_t& pos_fo
              std::vector<uint32_t>& ants_seeds, // Cada formiga tem sua semente!
              std::size_t& cpteur_food, double m_eps) ;
 
+double ant::m_eps = 0.;
 #endif

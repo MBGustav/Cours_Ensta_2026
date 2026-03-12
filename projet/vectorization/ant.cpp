@@ -2,9 +2,6 @@
 #include <iostream>
 #include "rand_generator.hpp"
 
-double ant::m_eps = 0.;
-
-
 
 void advance(pheronome& phen, const fractal_land& land, const position_t& pos_food, const position_t& pos_nest,
              std::vector<int>& ants_x, std::vector<int>& ants_y, std::vector<ant::state>& ants_state,

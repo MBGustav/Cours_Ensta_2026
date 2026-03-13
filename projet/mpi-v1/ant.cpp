@@ -2,13 +2,7 @@
 #include <iostream>
 #include "rand_generator.hpp"
 
-// ============================================================
-// MPI CHANGE: advance() accepte désormais local_begin et
-//   local_end pour ne traiter que la tranche de fourmis
-//   assignée au rang MPI courant.
-//   Les lambdas ant_choice / dir_choice utilisent toujours
-//   la graine privée par fourmi (inchangé).
-// ============================================================
+
 void advance(pheronome& phen, const fractal_land& land,
     const position_t& pos_food, const position_t& pos_nest,
     std::vector<int>& ants_x, std::vector<int>& ants_y,

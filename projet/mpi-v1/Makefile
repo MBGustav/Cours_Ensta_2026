@@ -2,7 +2,7 @@ include Make_linux.inc
 
 # Configurações de Compilação
 # -g para símbolos, -O3 para otimização, -fno-omit-frame-pointer para FlameGraph
-CXXFLAGS = -std=c++17 -fno-omit-frame-pointer -fPIC -g -O3 -march=native -Wall $(MPIFLAGS)
+CXXFLAGS = -std=c++17 -O3 -march=native -Wall $(MPIFLAGS)
 EXEC = ant_simu.exe
 NP = 4  # Número de processos MPI padrão
 

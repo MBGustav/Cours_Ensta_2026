@@ -12,7 +12,7 @@
 # include "rand_generator.hpp"
 
 static double eps = 0.8;  // Coefficient d'exploration
-constexpr size_t total_iterations = 500;
+constexpr size_t total_iterations = 4000;
 
 // ============================================================
 // MPI CHANGE: advance_time now accepts the local slice of ants
@@ -44,7 +44,6 @@ void advance_time( const fractal_land& land, pheronome& phen,
 
     // --- Phase 2 : MPI_Allreduce(MAX) sur le buffer des phéromones ---
     // CHANGE MPI: merge mark_pheronome writes from all ranks; the spec says
-    //   "on choisit la valeur la plus grande d'entre tous les processus"
     phen.sync_buffer_mpi();
 
     // --- Phase 3 : évaporation sur la bande locale (OMP) ---
@@ -52,22 +51,6 @@ void advance_time( const fractal_land& land, pheronome& phen,
     phen.do_evaporation(evap_begin, evap_end);
 
     // --- Phase 4 : MPI_Allreduce(MAX) pour diffuser l'évaporation ---
-    // After local evaporation, rows outside [evap_begin,evap_end] still hold
-    // pre-evaporation values.  A second Allreduce(MAX) would not give the
-    // correct minimum (evaporated) value, so we use Allreduce(MIN) restricted
-    // to the interior cells and then restore borders.
-    // Simpler correct approach: Allreduce(SUM) after zeroing non-owned rows,
-    // but that requires knowing which rank owns which row.
-    // CHOSEN APPROACH (matches spec "large data exchange is expected"):
-    //   Each rank owns [evap_begin, evap_end].  We use MPI_Allreduce with a
-    //   custom buffer strategy: broadcast only the evaporated band, then
-    //   combine with a second MPI_Allreduce(MPI_MIN) on interior cells only.
-    //   For simplicity and correctness we use MPI_Allreduce(MPI_MIN) on the
-    //   full buffer — the ghost cells are -1 (minimum already) and the food/
-    //   nest cells will be restored in update().  Unevaporated cells have a
-    //   higher value than their evaporated counterpart, so MIN gives the
-    //   correct evaporated value for all cells.
-    // NOTE: -1 sentinel values on borders are already the minimum → safe.
     {
         std::size_t total = (land.dimensions()+2) * (land.dimensions()+2) * 2;
         MPI_Allreduce(MPI_IN_PLACE,
@@ -106,7 +89,7 @@ int main(int nargs, char* argv[])
     position_t pos_food{500,500};
 
     // Chaque processus génère le paysage fractal complet (reproductible,
-    // même graine → même résultat sur tous les rangs)
+    // même graine : même résultat sur tous les rangs)
     fractal_land land(8,2,1.,1024);
     double max_val = 0.0;
     double min_val = 0.0;
@@ -166,24 +149,25 @@ int main(int nargs, char* argv[])
     bool   cont_loop        = true;
     bool   not_food_in_nest = true;
     std::size_t it = 0;
-
+    
     // --------------------------------------------------------
     // Timing MPI : mesure des phases séparément
     // --------------------------------------------------------
     double t_ant_total   = 0.;
     double t_sync_total  = 0.;
     double t_evap_total  = 0.;
-
+    
     SDL_Event event;
-
+    
+    std::ofstream timing_file("timing_rank_" + std::to_string(mpi_rank) + ".txt");
     while (cont_loop) {
         ++it;
 
         if (mpi_rank == 0) {
             while (SDL_PollEvent(&event))
                 if (event.type == SDL_QUIT) cont_loop = false;
+            
         }
-
         // Broadcast loop-control from rank 0 to all
         // CHANGE MPI: synchronise la variable cont_loop sur tous les rangs
         int cont_int = cont_loop ? 1 : 0;
@@ -214,25 +198,13 @@ int main(int nargs, char* argv[])
         t_evap_total += (t1 - t0);
 
         // Second Allreduce(MIN) to propagate evaporated values everywhere
-        // CHANGE MPI: diffuse les valeurs évaporées (band locale) vers tous les rangs
-        {
-            std::size_t total = (dim+2)*(dim+2)*2;
-            // MPI_Allgatherv(MPI_IN_PLACE,
-            //               0, MPI_DATATYPE_NULL,
-            //               phen.buffer_data(),
-            //               nullptr, nullptr, MPI_DATATYPE_NULL,
-            //               MPI_COMM_WORLD);
-
-            
-            // Alternative approach: Allreduce(MIN) on full buffer (simpler, correct, but plus de données échangées)
-            MPI_Allreduce(MPI_IN_PLACE,
-                          phen.buffer_data(),
-                          static_cast<int>(total),
-                          MPI_DOUBLE,
-                          MPI_MIN,
-                          MPI_COMM_WORLD);
-        }
-
+        // Allreduce(MIN) on full buffer (simpler, correct, but plus de données échangées)
+        MPI_Allreduce(MPI_IN_PLACE,
+                        phen.buffer_data(),
+                        static_cast<int>(total),
+                        MPI_DOUBLE,
+                        MPI_MIN,
+                        MPI_COMM_WORLD);
         phen.update();
 
         // Reduce food_quantity to rank 0
@@ -252,21 +224,20 @@ int main(int nargs, char* argv[])
         }
 
         if (it == total_iterations) cont_loop = false;
+        double loop_time = t_ant_total + t_sync_total + t_evap_total;
+        // CSV output (pandas-friendly)
+        if (it == 1) {
+            timing_file << "iter,rank,ant_move_s,phen_sync_s,evaporation_s,total_s\n";
+        }
+        timing_file << it << ","
+                << mpi_rank << ","
+                << t_ant_total << ","
+                << t_sync_total << ","
+                << t_evap_total << ","
+                << loop_time
+                << "\n";
     }
 
-    // --------------------------------------------------------
-    // CHANGE MPI: rapport de temps sur chaque rang
-    // --------------------------------------------------------
-    double total_time = t_ant_total + t_sync_total + t_evap_total;
-
-
-    std::ofstream timing_file("timing_rank_" + std::to_string(mpi_rank) + ".txt");
-    timing_file << "[Rank " << mpi_rank << "] "
-                << "ant_move=" << t_ant_total << "s  "
-                << "phen_sync=" << t_sync_total << "s  "
-                << "evaporation=" << t_evap_total << "s  "
-                << "total=" << total_time << "s"
-                << std::endl;
     timing_file.close();
 
 

@@ -2,6 +2,9 @@
 #include <iostream>
 #include <random>
 #include <fstream>
+#include <algorithm>
+#include <string>
+#include <cstdint>
 #include <mpi.h>
 #include "fractal_land.hpp"
 #include "ant.hpp"
@@ -145,7 +148,7 @@ int main(int nargs, char* argv[])
         renderer = new Renderer(land, phen, pos_nest, pos_food, ants_x, ants_y);
     }
 
-    size_t food_quantity = 0;
+    std::uint64_t food_quantity = 0;
     bool   cont_loop        = true;
     bool   not_food_in_nest = true;
     std::size_t it = 0;
@@ -199,6 +202,7 @@ int main(int nargs, char* argv[])
 
         // Second Allreduce(MIN) to propagate evaporated values everywhere
         // Allreduce(MIN) on full buffer (simpler, correct, but plus de données échangées)
+        std::size_t total = (land.dimensions()+2) * (land.dimensions()+2) * 2;
         MPI_Allreduce(MPI_IN_PLACE,
                         phen.buffer_data(),
                         static_cast<int>(total),
@@ -209,8 +213,8 @@ int main(int nargs, char* argv[])
 
         // Reduce food_quantity to rank 0
         // CHANGE MPI: agrège le compteur de nourriture depuis tous les rangs
-        std::size_t global_food = 0;
-        MPI_Reduce(&food_quantity, &global_food, 1, MPI_UNSIGNED_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+        std::uint64_t global_food = 0;
+        MPI_Reduce(&food_quantity, &global_food, 1, MPI_UINT64_T, MPI_SUM, 0, MPI_COMM_WORLD);
 
         if (mpi_rank == 0) {
             food_quantity = global_food;

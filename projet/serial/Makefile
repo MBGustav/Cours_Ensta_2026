@@ -9,7 +9,7 @@ CXXFLAGS += -pg -O0 -Wall -fbounds-check -pedantic -D_GLIBCXX_DEBUG
 CXXFLAGS2 = $(CXXFLAGS)
 else
 CXXFLAGS2 = ${CXXFLAGS} -O2 -march=native -Wall 
-CXXFLAGS += -O3 -march=native -Wall
+CXXFLAGS += -O2 -march=native -Wall
 endif
 
 ALL= ant_simu.exe 
@@ -38,7 +38,7 @@ help:
 profile: $(EXEC)
 	@echo "Running program with perf..."
 	sudo perf record -g -- ./$(EXEC)
-	sudo perf script | c++filt | gprof2dot -f perf -n 20.0 --show-samples | dot -Tpng -o output.png
+	sudo perf script | c++filt | gprof2dot -f perf -n 5.0 --show-samples | dot -Tpng -o output.png
 
 profile_fg: $(EXEC)
 	@echo "Running program with flamegraph..."

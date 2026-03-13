@@ -1,4 +1,6 @@
 #include <vector>
+#include <chrono>
+#include <fstream>
 #include <iostream>
 #include <random>
 #include "fractal_land.hpp"
@@ -8,7 +10,7 @@
 # include "window.hpp"
 # include "rand_generator.hpp"
 
-constexpr size_t total_iterations = 500;
+constexpr size_t total_iterations = 4000;
 
 void advance_time( const fractal_land& land, pheronome& phen, 
                    const position_t& pos_nest, const position_t& pos_food,
@@ -70,7 +72,11 @@ int main(int nargs, char* argv[])
     bool cont_loop = true;
     bool not_food_in_nest = true;
     std::size_t it = 0;
+    std::ofstream csv("result_vectorized.csv", std::ios::out | std::ios::app);
+    csv << "iteration,elapsed_seconds\n";
+    auto beg = std::chrono::high_resolution_clock::now();
     while (cont_loop) {
+        auto start_time = std::chrono::high_resolution_clock::now();
         ++it;
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT)
@@ -86,7 +92,18 @@ int main(int nargs, char* argv[])
 
         if ( it == total_iterations) cont_loop = false;
         //SDL_Delay(10);
+        auto end_time = std::chrono::high_resolution_clock::now();
+        csv << it << ',' << std::chrono::duration<double>(end_time - start_time).count() << '\n';
     }
+    
+    auto end = std::chrono::high_resolution_clock::now();
+    std::ofstream total_time_csv("total_time.csv", std::ios::out | std::ios::app);
+    total_time_csv << "total_time\n";
+    total_time_csv << std::chrono::duration<double>(end - beg).count() << '\n';
+    total_time_csv.close();
+
     SDL_Quit();
+
+    csv.close();
     return 0;
 }

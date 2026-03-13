@@ -1,0 +1,1 @@
+[Rank 0] ant_move=7.12834s  phen_sync=20.3951s  evaporation=6.9688s  total=34.4922s

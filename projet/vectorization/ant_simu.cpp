@@ -9,7 +9,7 @@
 # include "rand_generator.hpp"
 
 static double eps = 0.8;  // Coefficient d'exploration
-constexpr size_t total_iterations = 500;
+constexpr size_t total_iterations = 10000;
 
 void advance_time( const fractal_land& land, pheronome& phen, 
                    const position_t& pos_nest, const position_t& pos_food,

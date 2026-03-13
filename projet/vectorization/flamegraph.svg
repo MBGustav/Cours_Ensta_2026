@@ -1,6 +1,6 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" width="1200" height="150" onload="init(evt)" viewBox="0 0 1200 150" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg version="1.1" width="1200" height="550" onload="init(evt)" viewBox="0 0 1200 550" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <!-- Flame graph stack visualization. See https://github.com/brendangregg/FlameGraph for latest version, and http://www.brendangregg.com/flamegraphs.html for examples. -->
 <!-- NOTES:  -->
 <defs>
@@ -422,41 +422,1453 @@
 	}
 ]]>
 </script>
-<rect x="0.0" y="0" width="1200.0" height="150.0" fill="url(#background)"  />
+<rect x="0.0" y="0" width="1200.0" height="550.0" fill="url(#background)"  />
 <text id="title" x="600.00" y="24" >Icicle Graph</text>
-<text id="details" x="10.00" y="133" > </text>
+<text id="details" x="10.00" y="533" > </text>
 <text id="unzoom" x="10.00" y="24" class="hide">Reset Zoom</text>
 <text id="search" x="1090.00" y="24" >Search</text>
 <text id="ignorecase" x="1174.00" y="24" >ic</text>
-<text id="matched" x="1090.00" y="133" > </text>
+<text id="matched" x="1090.00" y="533" > </text>
 <g id="frames">
 <g >
-<title>main (5,131,014,883 samples, 2.28%)</title><rect x="1161.2" y="84" width="26.9" height="15.0" fill="rgb(243,179,42)" rx="2" ry="2" />
-<text  x="1164.16" y="94.5" >m..</text>
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (383,212,000,638 samples, 7.80%)</title><rect x="1093.6" y="148" width="92.0" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="1096.57" y="158.5" >[libgallium..</text>
 </g>
 <g >
-<title>advance (1,583,399,551 samples, 0.70%)</title><rect x="1161.6" y="100" width="8.3" height="15.0" fill="rgb(249,204,48)" rx="2" ry="2" />
-<text  x="1164.61" y="110.5" ></text>
+<title>pick_next_task_fair (705,502,031 samples, 0.01%)</title><rect x="1187.2" y="372" width="0.2" height="15.0" fill="rgb(242,170,40)" rx="2" ry="2" />
+<text  x="1190.22" y="382.5" ></text>
 </g>
 <g >
-<title>advance_time (3,386,678,433 samples, 1.50%)</title><rect x="1169.9" y="100" width="17.8" height="15.0" fill="rgb(251,214,51)" rx="2" ry="2" />
-<text  x="1172.91" y="110.5" ></text>
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (1,749,982,552 samples, 0.04%)</title><rect x="29.9" y="276" width="0.5" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="32.95" y="286.5" ></text>
 </g>
 <g >
-<title>ant_simu.exe (224,683,254,305 samples, 99.84%)</title><rect x="10.0" y="52" width="1178.2" height="15.0" fill="rgb(254,229,54)" rx="2" ry="2" />
+<title>do_syscall_64 (10,629,337,147 samples, 0.22%)</title><rect x="1181.4" y="228" width="2.6" height="15.0" fill="rgb(209,20,4)" rx="2" ry="2" />
+<text  x="1184.43" y="238.5" ></text>
+</g>
+<g >
+<title>__x64_sys_futex (3,690,202,238 samples, 0.08%)</title><rect x="154.7" y="388" width="0.9" height="15.0" fill="rgb(239,159,38)" rx="2" ry="2" />
+<text  x="157.67" y="398.5" ></text>
+</g>
+<g >
+<title>tick_nohz_handler (10,998,386,439 samples, 0.22%)</title><rect x="1077.5" y="196" width="2.7" height="15.0" fill="rgb(248,200,48)" rx="2" ry="2" />
+<text  x="1080.52" y="206.5" ></text>
+</g>
+<g >
+<title>futex_do_wait (1,116,974,465 samples, 0.02%)</title><rect x="1189.4" y="292" width="0.3" height="15.0" fill="rgb(208,15,3)" rx="2" ry="2" />
+<text  x="1192.42" y="302.5" ></text>
+</g>
+<g >
+<title>__futex_wait (10,184,457,575 samples, 0.21%)</title><rect x="1186.8" y="276" width="2.4" height="15.0" fill="rgb(207,12,3)" rx="2" ry="2" />
+<text  x="1189.78" y="286.5" ></text>
+</g>
+<g >
+<title>intel_pmu_enable_all (430,805,952 samples, 0.01%)</title><rect x="1187.0" y="404" width="0.1" height="15.0" fill="rgb(205,4,1)" rx="2" ry="2" />
+<text  x="1190.04" y="414.5" ></text>
+</g>
+<g >
+<title>do_futex (1,233,570,823 samples, 0.03%)</title><rect x="1189.4" y="244" width="0.3" height="15.0" fill="rgb(245,184,44)" rx="2" ry="2" />
+<text  x="1192.42" y="254.5" ></text>
+</g>
+<g >
+<title>perf_adjust_freq_unthr_context (654,229,888 samples, 0.01%)</title><rect x="1078.2" y="260" width="0.2" height="15.0" fill="rgb(236,146,35)" rx="2" ry="2" />
+<text  x="1081.21" y="270.5" ></text>
+</g>
+<g >
+<title>irq_exit_rcu (1,465,734,080 samples, 0.03%)</title><rect x="1076.3" y="148" width="0.4" height="15.0" fill="rgb(254,227,54)" rx="2" ry="2" />
+<text  x="1079.31" y="158.5" ></text>
+</g>
+<g >
+<title>x64_sys_call (10,568,567,732 samples, 0.22%)</title><rect x="1181.4" y="244" width="2.6" height="15.0" fill="rgb(247,194,46)" rx="2" ry="2" />
+<text  x="1184.44" y="254.5" ></text>
+</g>
+<g >
+<title>[libSDL2-2.0.so.0.3000.0] (1,062,133,244 samples, 0.02%)</title><rect x="46.2" y="228" width="0.3" height="15.0" fill="rgb(227,102,24)" rx="2" ry="2" />
+<text  x="49.20" y="238.5" ></text>
+</g>
+<g >
+<title>__memmove_evex_unaligned_erms (1,806,470,393 samples, 0.04%)</title><rect x="157.7" y="244" width="0.4" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="160.70" y="254.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (1,008,237,652 samples, 0.02%)</title><rect x="1185.7" y="164" width="0.3" height="15.0" fill="rgb(218,63,15)" rx="2" ry="2" />
+<text  x="1188.71" y="174.5" ></text>
+</g>
+<g >
+<title>__common_interrupt (2,524,194,201 samples, 0.05%)</title><rect x="1075.7" y="148" width="0.6" height="15.0" fill="rgb(237,150,36)" rx="2" ry="2" />
+<text  x="1078.70" y="158.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (1,470,337,992 samples, 0.03%)</title><rect x="1189.4" y="180" width="0.3" height="15.0" fill="rgb(218,63,15)" rx="2" ry="2" />
+<text  x="1192.36" y="190.5" ></text>
+</g>
+<g >
+<title>__hrtimer_run_queues (424,403,953 samples, 0.01%)</title><rect x="158.2" y="308" width="0.1" height="15.0" fill="rgb(237,150,35)" rx="2" ry="2" />
+<text  x="161.16" y="318.5" ></text>
+</g>
+<g >
+<title>asm_sysvec_apic_timer_interrupt (432,846,921 samples, 0.01%)</title><rect x="157.6" y="260" width="0.1" height="15.0" fill="rgb(232,127,30)" rx="2" ry="2" />
+<text  x="160.58" y="270.5" ></text>
+</g>
+<g >
+<title>futex_wait_setup (789,251,735 samples, 0.02%)</title><rect x="1189.0" y="292" width="0.2" height="15.0" fill="rgb(247,195,46)" rx="2" ry="2" />
+<text  x="1192.03" y="302.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (1,660,783,131 samples, 0.03%)</title><rect x="30.0" y="292" width="0.4" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="32.96" y="302.5" ></text>
+</g>
+<g >
+<title>eb_request_add (1,492,939,979 samples, 0.03%)</title><rect x="1183.1" y="340" width="0.4" height="15.0" fill="rgb(212,35,8)" rx="2" ry="2" />
+<text  x="1186.09" y="350.5" ></text>
+</g>
+<g >
+<title>asm_sysvec_irq_work (1,166,522,105 samples, 0.02%)</title><rect x="1081.7" y="116" width="0.3" height="15.0" fill="rgb(219,64,15)" rx="2" ry="2" />
+<text  x="1084.74" y="126.5" ></text>
+</g>
+<g >
+<title>__sysvec_apic_timer_interrupt (1,377,694,711 samples, 0.03%)</title><rect x="1054.3" y="164" width="0.4" height="15.0" fill="rgb(242,173,41)" rx="2" ry="2" />
+<text  x="1057.32" y="174.5" ></text>
+</g>
+<g >
+<title>asm_sysvec_apic_timer_interrupt (732,787,715 samples, 0.01%)</title><rect x="158.1" y="244" width="0.2" height="15.0" fill="rgb(232,127,30)" rx="2" ry="2" />
+<text  x="161.15" y="254.5" ></text>
+</g>
+<g >
+<title>exit_to_user_mode_loop (479,576,866 samples, 0.01%)</title><rect x="155.9" y="356" width="0.1" height="15.0" fill="rgb(224,90,21)" rx="2" ry="2" />
+<text  x="158.92" y="366.5" ></text>
+</g>
+<g >
+<title>idma64_irq.cold (476,224,367 samples, 0.01%)</title><rect x="1076.1" y="212" width="0.2" height="15.0" fill="rgb(218,59,14)" rx="2" ry="2" />
+<text  x="1079.15" y="222.5" ></text>
+</g>
+<g >
+<title>dequeue_entity (3,259,250,181 samples, 0.07%)</title><rect x="1188.0" y="404" width="0.8" height="15.0" fill="rgb(233,130,31)" rx="2" ry="2" />
+<text  x="1191.02" y="414.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (467,271,805 samples, 0.01%)</title><rect x="156.3" y="340" width="0.1" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="159.30" y="350.5" ></text>
+</g>
+<g >
+<title>futex_wait (10,432,916,258 samples, 0.21%)</title><rect x="1186.7" y="260" width="2.6" height="15.0" fill="rgb(235,138,33)" rx="2" ry="2" />
+<text  x="1189.74" y="270.5" ></text>
+</g>
+<g >
+<title>loader_dri3_get_buffers (518,905,553 samples, 0.01%)</title><rect x="156.3" y="308" width="0.1" height="15.0" fill="rgb(250,209,50)" rx="2" ry="2" />
+<text  x="159.29" y="318.5" ></text>
+</g>
+<g >
+<title>_i915_vma_move_to_active (2,623,383,415 samples, 0.05%)</title><rect x="1182.1" y="356" width="0.6" height="15.0" fill="rgb(235,142,34)" rx="2" ry="2" />
+<text  x="1185.11" y="366.5" ></text>
+</g>
+<g >
+<title>__GI___futex_abstimed_wait_cancelable64 (12,852,805,679 samples, 0.26%)</title><rect x="1186.3" y="164" width="3.0" height="15.0" fill="rgb(215,48,11)" rx="2" ry="2" />
+<text  x="1189.26" y="174.5" ></text>
+</g>
+<g >
+<title>SDL_RenderDrawPoint@plt (1,914,898,999 samples, 0.04%)</title><rect x="169.8" y="132" width="0.4" height="15.0" fill="rgb(228,109,26)" rx="2" ry="2" />
+<text  x="172.78" y="142.5" ></text>
+</g>
+<g >
+<title>__GI___ioctl (861,415,675 samples, 0.02%)</title><rect x="1180.8" y="276" width="0.2" height="15.0" fill="rgb(232,128,30)" rx="2" ry="2" />
+<text  x="1183.80" y="286.5" ></text>
+</g>
+<g >
+<title>__pick_next_task (445,302,793 samples, 0.01%)</title><rect x="1081.4" y="228" width="0.1" height="15.0" fill="rgb(228,108,25)" rx="2" ry="2" />
+<text  x="1084.41" y="238.5" ></text>
+</g>
+<g >
+<title>wake_up_q (936,887,933 samples, 0.02%)</title><rect x="156.1" y="420" width="0.2" height="15.0" fill="rgb(237,151,36)" rx="2" ry="2" />
+<text  x="159.06" y="430.5" ></text>
+</g>
+<g >
+<title>x64_sys_call (913,543,141 samples, 0.02%)</title><rect x="1082.3" y="148" width="0.3" height="15.0" fill="rgb(247,194,46)" rx="2" ry="2" />
+<text  x="1085.33" y="158.5" ></text>
+</g>
+<g >
+<title>hrtimer_interrupt (416,946,822 samples, 0.01%)</title><rect x="1184.1" y="244" width="0.1" height="15.0" fill="rgb(228,109,26)" rx="2" ry="2" />
+<text  x="1187.07" y="254.5" ></text>
+</g>
+<g >
+<title>[libGLX_mesa.so.0.0.0] (804,133,445 samples, 0.02%)</title><rect x="173.7" y="180" width="0.2" height="15.0" fill="rgb(229,111,26)" rx="2" ry="2" />
+<text  x="176.66" y="190.5" ></text>
+</g>
+<g >
+<title>process_csb (643,384,032 samples, 0.01%)</title><rect x="1076.5" y="244" width="0.1" height="15.0" fill="rgb(229,113,27)" rx="2" ry="2" />
+<text  x="1079.49" y="254.5" ></text>
+</g>
+<g >
+<title>drm_ioctl (716,827,507 samples, 0.01%)</title><rect x="1180.8" y="356" width="0.2" height="15.0" fill="rgb(231,121,29)" rx="2" ry="2" />
+<text  x="1183.83" y="366.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (296,323,482,895 samples, 6.03%)</title><rect x="87.4" y="228" width="71.2" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="90.35" y="238.5" >[libgall..</text>
+</g>
+<g >
+<title>do_syscall_64 (1,445,624,552 samples, 0.03%)</title><rect x="1189.4" y="196" width="0.3" height="15.0" fill="rgb(209,20,4)" rx="2" ry="2" />
+<text  x="1192.37" y="206.5" ></text>
+</g>
+<g >
+<title>call_timer_fn (1,658,585,558 samples, 0.03%)</title><rect x="1080.8" y="228" width="0.4" height="15.0" fill="rgb(234,135,32)" rx="2" ry="2" />
+<text  x="1083.79" y="238.5" ></text>
+</g>
+<g >
+<title>x64_sys_call (1,259,037,360 samples, 0.03%)</title><rect x="1189.4" y="212" width="0.3" height="15.0" fill="rgb(247,194,46)" rx="2" ry="2" />
+<text  x="1192.41" y="222.5" ></text>
+</g>
+<g >
+<title>__GI___ioctl (10,727,676,446 samples, 0.22%)</title><rect x="1181.4" y="196" width="2.6" height="15.0" fill="rgb(232,128,30)" rx="2" ry="2" />
+<text  x="1184.41" y="206.5" ></text>
+</g>
+<g >
+<title>hrtimer_interrupt (13,957,931,817 samples, 0.28%)</title><rect x="1077.2" y="164" width="3.4" height="15.0" fill="rgb(228,109,26)" rx="2" ry="2" />
+<text  x="1080.20" y="174.5" ></text>
+</g>
+<g >
+<title>update_cfs_group (1,811,115,853 samples, 0.04%)</title><rect x="1078.6" y="260" width="0.4" height="15.0" fill="rgb(242,174,41)" rx="2" ry="2" />
+<text  x="1081.59" y="270.5" ></text>
+</g>
+<g >
+<title>start_thread (3,722,961,235,392 samples, 75.81%)</title><rect x="195.4" y="84" width="894.6" height="15.0" fill="rgb(212,34,8)" rx="2" ry="2" />
+<text  x="198.41" y="94.5" >start_thread</text>
+</g>
+<g >
+<title>cache_tag_flush_range (1,262,712,476 samples, 0.03%)</title><rect x="1080.8" y="292" width="0.3" height="15.0" fill="rgb(232,127,30)" rx="2" ry="2" />
+<text  x="1083.83" y="302.5" ></text>
+</g>
+<g >
+<title>run_timer_softirq (1,832,462,589 samples, 0.04%)</title><rect x="1080.8" y="196" width="0.4" height="15.0" fill="rgb(249,206,49)" rx="2" ry="2" />
+<text  x="1083.77" y="206.5" ></text>
+</g>
+<g >
+<title>irqentry_exit_to_user_mode (1,140,913,652 samples, 0.02%)</title><rect x="1081.3" y="164" width="0.3" height="15.0" fill="rgb(254,229,54)" rx="2" ry="2" />
+<text  x="1084.30" y="174.5" ></text>
+</g>
+<g >
+<title>drm_ioctl_kernel (10,252,261,622 samples, 0.21%)</title><rect x="1181.5" y="292" width="2.5" height="15.0" fill="rgb(226,101,24)" rx="2" ry="2" />
+<text  x="1184.50" y="302.5" ></text>
+</g>
+<g >
+<title>[libgomp.so.1.0.0] (20,070,156,160 samples, 0.41%)</title><rect x="180.4" y="148" width="4.8" height="15.0" fill="rgb(220,71,17)" rx="2" ry="2" />
+<text  x="183.43" y="158.5" ></text>
+</g>
+<g >
+<title>perf_ctx_enable (478,887,034 samples, 0.01%)</title><rect x="1187.0" y="372" width="0.1" height="15.0" fill="rgb(227,105,25)" rx="2" ry="2" />
+<text  x="1190.03" y="382.5" ></text>
+</g>
+<g >
+<title>__x64_sys_futex (1,255,093,702 samples, 0.03%)</title><rect x="1189.4" y="228" width="0.3" height="15.0" fill="rgb(239,159,38)" rx="2" ry="2" />
+<text  x="1192.41" y="238.5" ></text>
+</g>
+<g >
+<title>ant_simu.exe (4,494,923,973,185 samples, 91.53%)</title><rect x="10.0" y="52" width="1080.1" height="15.0" fill="rgb(254,229,54)" rx="2" ry="2" />
 <text  x="13.00" y="62.5" >ant_simu.exe</text>
 </g>
 <g >
-<title>all (225,034,675,248 samples, 100%)</title><rect x="10.0" y="36" width="1180.0" height="15.0" fill="rgb(213,39,9)" rx="2" ry="2" />
+<title>handle_edge_irq (2,452,722,954 samples, 0.05%)</title><rect x="1075.7" y="164" width="0.6" height="15.0" fill="rgb(220,69,16)" rx="2" ry="2" />
+<text  x="1078.71" y="174.5" ></text>
+</g>
+<g >
+<title>i915_active_acquire (444,348,529 samples, 0.01%)</title><rect x="1182.6" y="388" width="0.1" height="15.0" fill="rgb(253,221,53)" rx="2" ry="2" />
+<text  x="1185.62" y="398.5" ></text>
+</g>
+<g >
+<title>handle_softirqs (1,441,828,700 samples, 0.03%)</title><rect x="1076.3" y="180" width="0.4" height="15.0" fill="rgb(238,156,37)" rx="2" ry="2" />
+<text  x="1079.31" y="190.5" ></text>
+</g>
+<g >
+<title>clockevents_program_event (713,518,798 samples, 0.01%)</title><rect x="1080.4" y="196" width="0.1" height="15.0" fill="rgb(244,182,43)" rx="2" ry="2" />
+<text  x="1083.37" y="206.5" ></text>
+</g>
+<g >
+<title>handle_irq_event (2,076,639,919 samples, 0.04%)</title><rect x="1075.8" y="180" width="0.5" height="15.0" fill="rgb(209,19,4)" rx="2" ry="2" />
+<text  x="1078.78" y="190.5" ></text>
+</g>
+<g >
+<title>[libSDL2-2.0.so.0.3000.0] (12,917,957,394 samples, 0.26%)</title><rect x="170.8" y="132" width="3.1" height="15.0" fill="rgb(227,102,24)" rx="2" ry="2" />
+<text  x="173.83" y="142.5" ></text>
+</g>
+<g >
+<title>__update_load_avg_cfs_rq (476,233,472 samples, 0.01%)</title><rect x="1079.6" y="276" width="0.1" height="15.0" fill="rgb(228,107,25)" rx="2" ry="2" />
+<text  x="1082.55" y="286.5" ></text>
+</g>
+<g >
+<title>advance_time (89,316,411,131 samples, 1.82%)</title><rect x="173.9" y="132" width="21.5" height="15.0" fill="rgb(251,214,51)" rx="2" ry="2" />
+<text  x="176.93" y="142.5" >a..</text>
+</g>
+<g >
+<title>pheronome::do_evaporation (29,461,257,291 samples, 0.60%)</title><rect x="1082.6" y="116" width="7.1" height="15.0" fill="rgb(251,215,51)" rx="2" ry="2" />
+<text  x="1085.61" y="126.5" ></text>
+</g>
+<g >
+<title>__i915_sw_fence_complete (426,202,840 samples, 0.01%)</title><rect x="1183.3" y="388" width="0.1" height="15.0" fill="rgb(228,105,25)" rx="2" ry="2" />
+<text  x="1186.34" y="398.5" ></text>
+</g>
+<g >
+<title>pick_next_task (449,234,501 samples, 0.01%)</title><rect x="1081.4" y="212" width="0.1" height="15.0" fill="rgb(206,4,1)" rx="2" ry="2" />
+<text  x="1084.41" y="222.5" ></text>
+</g>
+<g >
+<title>dequeue_task_fair (554,398,947 samples, 0.01%)</title><rect x="1189.6" y="372" width="0.1" height="15.0" fill="rgb(230,119,28)" rx="2" ry="2" />
+<text  x="1192.55" y="382.5" ></text>
+</g>
+<g >
+<title>x64_sys_call (1,052,505,428 samples, 0.02%)</title><rect x="156.0" y="356" width="0.3" height="15.0" fill="rgb(247,194,46)" rx="2" ry="2" />
+<text  x="159.04" y="366.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (1,500,892,124 samples, 0.03%)</title><rect x="30.0" y="308" width="0.3" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="32.98" y="318.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (10,656,899,009 samples, 0.22%)</title><rect x="1181.4" y="212" width="2.6" height="15.0" fill="rgb(218,63,15)" rx="2" ry="2" />
+<text  x="1184.42" y="222.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (9,318,950,615 samples, 0.19%)</title><rect x="164.3" y="180" width="2.2" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="167.28" y="190.5" ></text>
+</g>
+<g >
+<title>task_tick_fair (6,031,641,061 samples, 0.12%)</title><rect x="1078.4" y="244" width="1.5" height="15.0" fill="rgb(217,57,13)" rx="2" ry="2" />
+<text  x="1081.43" y="254.5" ></text>
+</g>
+<g >
+<title>update_process_times (1,038,389,171 samples, 0.02%)</title><rect x="1054.4" y="228" width="0.2" height="15.0" fill="rgb(250,209,50)" rx="2" ry="2" />
+<text  x="1057.38" y="238.5" ></text>
+</g>
+<g >
+<title>memcpy@plt (618,139,317 samples, 0.01%)</title><rect x="162.3" y="228" width="0.1" height="15.0" fill="rgb(224,88,21)" rx="2" ry="2" />
+<text  x="165.30" y="238.5" ></text>
+</g>
+<g >
+<title>[libSDL2-2.0.so.0.3000.0] (4,848,978,503 samples, 0.10%)</title><rect x="45.3" y="212" width="1.2" height="15.0" fill="rgb(227,102,24)" rx="2" ry="2" />
+<text  x="48.30" y="222.5" ></text>
+</g>
+<g >
+<title>__sysvec_apic_timer_interrupt (495,631,549 samples, 0.01%)</title><rect x="1075.5" y="164" width="0.1" height="15.0" fill="rgb(242,173,41)" rx="2" ry="2" />
+<text  x="1078.49" y="174.5" ></text>
+</g>
+<g >
+<title>pthread_cond_wait@@GLIBC_2.3.2 (15,287,463,408 samples, 0.31%)</title><rect x="1186.1" y="148" width="3.7" height="15.0" fill="rgb(253,221,53)" rx="2" ry="2" />
+<text  x="1189.11" y="158.5" ></text>
+</g>
+<g >
+<title>schedule (729,272,135 samples, 0.01%)</title><rect x="1082.1" y="180" width="0.2" height="15.0" fill="rgb(254,229,54)" rx="2" ry="2" />
+<text  x="1085.10" y="190.5" ></text>
+</g>
+<g >
+<title>__schedule (791,986,891 samples, 0.02%)</title><rect x="1081.4" y="196" width="0.2" height="15.0" fill="rgb(227,103,24)" rx="2" ry="2" />
+<text  x="1084.38" y="206.5" ></text>
+</g>
+<g >
+<title>__schedule (773,910,323 samples, 0.02%)</title><rect x="1082.3" y="260" width="0.2" height="15.0" fill="rgb(227,103,24)" rx="2" ry="2" />
+<text  x="1085.34" y="270.5" ></text>
+</g>
+<g >
+<title>sysvec_irq_work (1,030,501,465 samples, 0.02%)</title><rect x="1081.8" y="132" width="0.2" height="15.0" fill="rgb(206,6,1)" rx="2" ry="2" />
+<text  x="1084.77" y="142.5" ></text>
+</g>
+<g >
+<title>handle_irq_desc (462,918,520 samples, 0.01%)</title><rect x="1076.1" y="244" width="0.2" height="15.0" fill="rgb(205,2,0)" rx="2" ry="2" />
+<text  x="1079.15" y="254.5" ></text>
+</g>
+<g >
+<title>i915_gem_do_execbuffer (564,719,442 samples, 0.01%)</title><rect x="30.2" y="452" width="0.1" height="15.0" fill="rgb(216,54,13)" rx="2" ry="2" />
+<text  x="33.20" y="462.5" ></text>
+</g>
+<g >
+<title>__memcmp_evex_movbe (11,632,568,792 samples, 0.24%)</title><rect x="158.6" y="228" width="2.7" height="15.0" fill="rgb(219,67,16)" rx="2" ry="2" />
+<text  x="161.55" y="238.5" ></text>
+</g>
+<g >
+<title>drm_ioctl (619,087,735 samples, 0.01%)</title><rect x="30.2" y="404" width="0.1" height="15.0" fill="rgb(231,121,29)" rx="2" ry="2" />
+<text  x="33.18" y="414.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (1,804,394,208 samples, 0.04%)</title><rect x="29.9" y="244" width="0.5" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="32.94" y="254.5" ></text>
+</g>
+<g >
+<title>x86_pmu_enable (461,570,472 samples, 0.01%)</title><rect x="1187.0" y="388" width="0.1" height="15.0" fill="rgb(244,179,43)" rx="2" ry="2" />
+<text  x="1190.03" y="398.5" ></text>
+</g>
+<g >
+<title>__sysvec_apic_timer_interrupt (494,598,358 samples, 0.01%)</title><rect x="158.2" y="276" width="0.1" height="15.0" fill="rgb(242,173,41)" rx="2" ry="2" />
+<text  x="161.15" y="286.5" ></text>
+</g>
+<g >
+<title>dequeue_entities (4,109,218,846 samples, 0.08%)</title><rect x="1187.9" y="388" width="1.0" height="15.0" fill="rgb(241,166,39)" rx="2" ry="2" />
+<text  x="1190.94" y="398.5" ></text>
+</g>
+<g >
+<title>tasklet_hi_action (754,267,536 samples, 0.02%)</title><rect x="1183.1" y="436" width="0.2" height="15.0" fill="rgb(205,0,0)" rx="2" ry="2" />
+<text  x="1186.13" y="446.5" ></text>
+</g>
+<g >
+<title>do_futex (1,036,308,744 samples, 0.02%)</title><rect x="156.0" y="388" width="0.3" height="15.0" fill="rgb(245,184,44)" rx="2" ry="2" />
+<text  x="159.04" y="398.5" ></text>
+</g>
+<g >
+<title>__memmove_evex_unaligned_erms (6,451,252,188 samples, 0.13%)</title><rect x="162.5" y="212" width="1.5" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="165.45" y="222.5" ></text>
+</g>
+<g >
+<title>futex_wake (3,444,610,105 samples, 0.07%)</title><rect x="154.7" y="420" width="0.8" height="15.0" fill="rgb(219,65,15)" rx="2" ry="2" />
+<text  x="157.71" y="430.5" ></text>
+</g>
+<g >
+<title>do_futex (889,961,748 samples, 0.02%)</title><rect x="1082.3" y="180" width="0.2" height="15.0" fill="rgb(245,184,44)" rx="2" ry="2" />
+<text  x="1085.33" y="190.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (783,023,241 samples, 0.02%)</title><rect x="1180.8" y="308" width="0.2" height="15.0" fill="rgb(209,20,4)" rx="2" ry="2" />
+<text  x="1183.82" y="318.5" ></text>
+</g>
+<g >
+<title>__handle_irq_event_percpu (456,655,396 samples, 0.01%)</title><rect x="1076.1" y="276" width="0.2" height="15.0" fill="rgb(236,147,35)" rx="2" ry="2" />
+<text  x="1079.15" y="286.5" ></text>
+</g>
+<g >
+<title>clone3 (3,722,961,235,392 samples, 75.81%)</title><rect x="195.4" y="68" width="894.6" height="15.0" fill="rgb(216,54,12)" rx="2" ry="2" />
+<text  x="198.41" y="78.5" >clone3</text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (506,916,176 samples, 0.01%)</title><rect x="156.3" y="324" width="0.1" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="159.30" y="334.5" ></text>
+</g>
+<g >
+<title>__GI___lll_lock_wake (1,693,503,284 samples, 0.03%)</title><rect x="155.9" y="308" width="0.4" height="15.0" fill="rgb(210,23,5)" rx="2" ry="2" />
+<text  x="158.89" y="318.5" ></text>
+</g>
+<g >
+<title>__sysvec_irq_work (667,355,115 samples, 0.01%)</title><rect x="1081.8" y="148" width="0.1" height="15.0" fill="rgb(229,110,26)" rx="2" ry="2" />
+<text  x="1084.77" y="158.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (11,906,312,513 samples, 0.24%)</title><rect x="1186.4" y="196" width="2.9" height="15.0" fill="rgb(209,20,4)" rx="2" ry="2" />
+<text  x="1189.41" y="206.5" ></text>
+</g>
+<g >
+<title>drm_ioctl (10,397,668,153 samples, 0.21%)</title><rect x="1181.5" y="276" width="2.5" height="15.0" fill="rgb(231,121,29)" rx="2" ry="2" />
+<text  x="1184.46" y="286.5" ></text>
+</g>
+<g >
+<title>__do_softirq (802,467,018 samples, 0.02%)</title><rect x="1183.1" y="404" width="0.2" height="15.0" fill="rgb(246,191,45)" rx="2" ry="2" />
+<text  x="1186.12" y="414.5" ></text>
+</g>
+<g >
+<title>update_entity_lag (450,152,534 samples, 0.01%)</title><rect x="1188.4" y="420" width="0.1" height="15.0" fill="rgb(221,74,17)" rx="2" ry="2" />
+<text  x="1191.43" y="430.5" ></text>
+</g>
+<g >
+<title>schedule (1,086,110,461 samples, 0.02%)</title><rect x="1189.4" y="308" width="0.3" height="15.0" fill="rgb(254,229,54)" rx="2" ry="2" />
+<text  x="1192.43" y="318.5" ></text>
+</g>
+<g >
+<title>futex_do_wait (8,990,342,395 samples, 0.18%)</title><rect x="1186.9" y="292" width="2.1" height="15.0" fill="rgb(208,15,3)" rx="2" ry="2" />
+<text  x="1189.85" y="302.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (1,120,610,390 samples, 0.02%)</title><rect x="1082.3" y="132" width="0.3" height="15.0" fill="rgb(209,20,4)" rx="2" ry="2" />
+<text  x="1085.28" y="142.5" ></text>
+</g>
+<g >
+<title>try_to_block_task.constprop.0.isra.0 (580,107,227 samples, 0.01%)</title><rect x="1189.5" y="340" width="0.2" height="15.0" fill="rgb(247,194,46)" rx="2" ry="2" />
+<text  x="1192.55" y="350.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (1,137,463,918 samples, 0.02%)</title><rect x="1082.3" y="116" width="0.3" height="15.0" fill="rgb(218,63,15)" rx="2" ry="2" />
+<text  x="1085.28" y="126.5" ></text>
+</g>
+<g >
+<title>ttwu_queue_wakelist (560,584,473 samples, 0.01%)</title><rect x="155.4" y="468" width="0.1" height="15.0" fill="rgb(209,19,4)" rx="2" ry="2" />
+<text  x="158.37" y="478.5" ></text>
+</g>
+<g >
+<title>pthread_cond_wait@@GLIBC_2.3.2 (988,469,982 samples, 0.02%)</title><rect x="155.6" y="324" width="0.3" height="15.0" fill="rgb(253,221,53)" rx="2" ry="2" />
+<text  x="158.62" y="334.5" ></text>
+</g>
+<g >
+<title>hrtimer_interrupt (491,320,734 samples, 0.01%)</title><rect x="1075.5" y="180" width="0.1" height="15.0" fill="rgb(228,109,26)" rx="2" ry="2" />
+<text  x="1078.49" y="190.5" ></text>
+</g>
+<g >
+<title>hrtimer_interrupt (486,741,942 samples, 0.01%)</title><rect x="158.2" y="292" width="0.1" height="15.0" fill="rgb(228,109,26)" rx="2" ry="2" />
+<text  x="161.15" y="302.5" ></text>
+</g>
+<g >
+<title>sysvec_apic_timer_interrupt (420,817,995 samples, 0.01%)</title><rect x="157.6" y="276" width="0.1" height="15.0" fill="rgb(220,69,16)" rx="2" ry="2" />
+<text  x="160.58" y="286.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (857,612,077 samples, 0.02%)</title><rect x="155.6" y="372" width="0.2" height="15.0" fill="rgb(209,20,4)" rx="2" ry="2" />
+<text  x="158.64" y="382.5" ></text>
+</g>
+<g >
+<title>__schedule (449,009,733 samples, 0.01%)</title><rect x="154.5" y="404" width="0.2" height="15.0" fill="rgb(227,103,24)" rx="2" ry="2" />
+<text  x="157.55" y="414.5" ></text>
+</g>
+<g >
+<title>dma_fence_release (681,947,255 samples, 0.01%)</title><rect x="1182.2" y="388" width="0.2" height="15.0" fill="rgb(234,136,32)" rx="2" ry="2" />
+<text  x="1185.24" y="398.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (41,366,174,250 samples, 0.84%)</title><rect x="147.6" y="260" width="10.0" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="150.63" y="270.5" ></text>
+</g>
+<g >
+<title>advance (42,205,271,725 samples, 0.86%)</title><rect x="185.3" y="148" width="10.1" height="15.0" fill="rgb(249,204,48)" rx="2" ry="2" />
+<text  x="188.25" y="158.5" ></text>
+</g>
+<g >
+<title>SDL_GetRenderer (1,726,036,731 samples, 0.04%)</title><rect x="168.7" y="132" width="0.4" height="15.0" fill="rgb(206,7,1)" rx="2" ry="2" />
+<text  x="171.66" y="142.5" ></text>
+</g>
+<g >
+<title>common_interrupt (4,506,787,182 samples, 0.09%)</title><rect x="1075.7" y="132" width="1.1" height="15.0" fill="rgb(215,46,11)" rx="2" ry="2" />
+<text  x="1078.70" y="142.5" ></text>
+</g>
+<g >
+<title>sched_tick (890,437,796 samples, 0.02%)</title><rect x="1054.4" y="244" width="0.2" height="15.0" fill="rgb(238,155,37)" rx="2" ry="2" />
+<text  x="1057.41" y="254.5" ></text>
+</g>
+<g >
+<title>[libgomp.so.1.0.0] (22,094,387,670 samples, 0.45%)</title><rect x="174.0" y="164" width="5.4" height="15.0" fill="rgb(220,71,17)" rx="2" ry="2" />
+<text  x="177.05" y="174.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (1,651,781,382 samples, 0.03%)</title><rect x="155.9" y="340" width="0.4" height="15.0" fill="rgb(209,20,4)" rx="2" ry="2" />
+<text  x="158.89" y="350.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (282,528,344,206 samples, 5.75%)</title><rect x="1117.6" y="164" width="67.9" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="1120.60" y="174.5" >[libgal..</text>
+</g>
+<g >
+<title>[libSDL2-2.0.so.0.3000.0] (596,352,375,993 samples, 12.14%)</title><rect x="23.3" y="164" width="143.3" height="15.0" fill="rgb(227,102,24)" rx="2" ry="2" />
+<text  x="26.30" y="174.5" >[libSDL2-2.0.so.0...</text>
+</g>
+<g >
+<title>_start (771,110,103,819 samples, 15.70%)</title><rect x="10.1" y="68" width="185.3" height="15.0" fill="rgb(245,185,44)" rx="2" ry="2" />
+<text  x="13.12" y="78.5" >_start</text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (4,904,140,071 samples, 0.10%)</title><rect x="154.4" y="340" width="1.2" height="15.0" fill="rgb(218,63,15)" rx="2" ry="2" />
+<text  x="157.40" y="350.5" ></text>
+</g>
+<g >
+<title>memcpy@plt (526,402,427 samples, 0.01%)</title><rect x="164.1" y="212" width="0.1" height="15.0" fill="rgb(224,88,21)" rx="2" ry="2" />
+<text  x="167.07" y="222.5" ></text>
+</g>
+<g >
+<title>sysvec_apic_timer_interrupt (706,567,654 samples, 0.01%)</title><rect x="1075.5" y="148" width="0.2" height="15.0" fill="rgb(220,69,16)" rx="2" ry="2" />
+<text  x="1078.49" y="158.5" ></text>
+</g>
+<g >
+<title>futex_wake (1,025,114,376 samples, 0.02%)</title><rect x="156.0" y="404" width="0.3" height="15.0" fill="rgb(219,65,15)" rx="2" ry="2" />
+<text  x="159.04" y="414.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (414,271,391,780 samples, 8.44%)</title><rect x="1090.3" y="132" width="99.6" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="1093.34" y="142.5" >[libgallium-..</text>
+</g>
+<g >
+<title>irq_work_run_list (663,910,406 samples, 0.01%)</title><rect x="1081.8" y="180" width="0.1" height="15.0" fill="rgb(243,176,42)" rx="2" ry="2" />
+<text  x="1084.77" y="190.5" ></text>
+</g>
+<g >
+<title>__handle_irq_event_percpu (2,005,698,739 samples, 0.04%)</title><rect x="1075.8" y="196" width="0.5" height="15.0" fill="rgb(236,147,35)" rx="2" ry="2" />
+<text  x="1078.78" y="206.5" ></text>
+</g>
+<g >
+<title>irqentry_exit (915,156,046 samples, 0.02%)</title><rect x="1082.1" y="148" width="0.2" height="15.0" fill="rgb(219,66,15)" rx="2" ry="2" />
+<text  x="1085.05" y="158.5" ></text>
+</g>
+<g >
+<title>__GI___lll_lock_wait (1,531,367,697 samples, 0.03%)</title><rect x="1189.3" y="164" width="0.4" height="15.0" fill="rgb(226,96,23)" rx="2" ry="2" />
+<text  x="1192.35" y="174.5" ></text>
+</g>
+<g >
+<title>tasklet_action_common (742,177,465 samples, 0.02%)</title><rect x="1183.1" y="452" width="0.2" height="15.0" fill="rgb(212,35,8)" rx="2" ry="2" />
+<text  x="1186.13" y="462.5" ></text>
+</g>
+<g >
+<title>sysvec_reschedule_ipi (941,103,000 samples, 0.02%)</title><rect x="1082.0" y="132" width="0.3" height="15.0" fill="rgb(236,146,35)" rx="2" ry="2" />
+<text  x="1085.05" y="142.5" ></text>
+</g>
+<g >
+<title>hrtimer_interrupt (1,363,941,795 samples, 0.03%)</title><rect x="1054.3" y="180" width="0.4" height="15.0" fill="rgb(228,109,26)" rx="2" ry="2" />
+<text  x="1057.33" y="190.5" ></text>
+</g>
+<g >
+<title>__run_timers (1,741,437,668 samples, 0.04%)</title><rect x="1080.8" y="212" width="0.4" height="15.0" fill="rgb(206,5,1)" rx="2" ry="2" />
+<text  x="1083.78" y="222.5" ></text>
+</g>
+<g >
+<title>handle_softirqs (2,845,868,498 samples, 0.06%)</title><rect x="1080.6" y="180" width="0.7" height="15.0" fill="rgb(238,156,37)" rx="2" ry="2" />
+<text  x="1083.59" y="190.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (29,670,401,914 samples, 0.60%)</title><rect x="1174.3" y="196" width="7.1" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="1177.28" y="206.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (425,240,361 samples, 0.01%)</title><rect x="1181.2" y="228" width="0.1" height="15.0" fill="rgb(218,63,15)" rx="2" ry="2" />
+<text  x="1184.24" y="238.5" ></text>
+</g>
+<g >
+<title>rcu_core_si (630,834,534 samples, 0.01%)</title><rect x="1080.6" y="196" width="0.2" height="15.0" fill="rgb(237,150,36)" rx="2" ry="2" />
+<text  x="1083.62" y="206.5" ></text>
+</g>
+<g >
+<title>Renderer::display (659,703,962,933 samples, 13.43%)</title><rect x="10.1" y="132" width="158.6" height="15.0" fill="rgb(251,212,50)" rx="2" ry="2" />
+<text  x="13.15" y="142.5" >Renderer::display</text>
+</g>
+<g >
+<title>__memmove_evex_unaligned_erms (2,777,253,661 samples, 0.06%)</title><rect x="161.3" y="228" width="0.7" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="164.35" y="238.5" ></text>
+</g>
+<g >
+<title>generic_handle_irq (469,479,879 samples, 0.01%)</title><rect x="1076.1" y="228" width="0.2" height="15.0" fill="rgb(251,212,50)" rx="2" ry="2" />
+<text  x="1079.15" y="238.5" ></text>
+</g>
+<g >
+<title>__x64_sys_futex (749,719,882 samples, 0.02%)</title><rect x="155.7" y="404" width="0.1" height="15.0" fill="rgb(239,159,38)" rx="2" ry="2" />
+<text  x="158.67" y="414.5" ></text>
+</g>
+<g >
+<title>i915_fence_release (679,328,730 samples, 0.01%)</title><rect x="1182.2" y="404" width="0.2" height="15.0" fill="rgb(205,4,0)" rx="2" ry="2" />
+<text  x="1185.24" y="414.5" ></text>
+</g>
+<g >
+<title>update_cfs_group (607,493,081 samples, 0.01%)</title><rect x="1079.9" y="244" width="0.1" height="15.0" fill="rgb(242,174,41)" rx="2" ry="2" />
+<text  x="1082.88" y="254.5" ></text>
+</g>
+<g >
+<title>__GI___ioctl (470,601,923 samples, 0.01%)</title><rect x="1181.1" y="228" width="0.1" height="15.0" fill="rgb(232,128,30)" rx="2" ry="2" />
+<text  x="1184.13" y="238.5" ></text>
+</g>
+<g >
+<title>sysvec_apic_timer_interrupt (781,865,514 samples, 0.02%)</title><rect x="1184.1" y="212" width="0.2" height="15.0" fill="rgb(220,69,16)" rx="2" ry="2" />
+<text  x="1187.06" y="222.5" ></text>
+</g>
+<g >
+<title>__intel_context_do_pin_ww (979,022,573 samples, 0.02%)</title><rect x="1182.8" y="356" width="0.2" height="15.0" fill="rgb(236,145,34)" rx="2" ry="2" />
+<text  x="1185.78" y="366.5" ></text>
+</g>
+<g >
+<title>loader_dri3_swap_buffers_msc (770,699,991 samples, 0.02%)</title><rect x="173.7" y="196" width="0.1" height="15.0" fill="rgb(205,3,0)" rx="2" ry="2" />
+<text  x="176.66" y="206.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (431,260,553,042 samples, 8.78%)</title><rect x="58.8" y="212" width="103.7" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="61.83" y="222.5" >[libgallium-..</text>
+</g>
+<g >
+<title>do_syscall_64 (627,167,686 samples, 0.01%)</title><rect x="30.2" y="356" width="0.1" height="15.0" fill="rgb(209,20,4)" rx="2" ry="2" />
+<text  x="33.18" y="366.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (415,282,114,708 samples, 8.46%)</title><rect x="1090.1" y="116" width="99.8" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="1093.14" y="126.5" >[libgallium-..</text>
+</g>
+<g >
+<title>pick_next_task_fair (425,732,259 samples, 0.01%)</title><rect x="1081.4" y="244" width="0.1" height="15.0" fill="rgb(242,170,40)" rx="2" ry="2" />
+<text  x="1084.42" y="254.5" ></text>
+</g>
+<g >
+<title>psi_group_change (833,571,075 samples, 0.02%)</title><rect x="1187.6" y="356" width="0.2" height="15.0" fill="rgb(226,101,24)" rx="2" ry="2" />
+<text  x="1190.63" y="366.5" ></text>
+</g>
+<g >
+<title>__sysvec_apic_timer_interrupt (14,091,821,350 samples, 0.29%)</title><rect x="1077.2" y="148" width="3.4" height="15.0" fill="rgb(242,173,41)" rx="2" ry="2" />
+<text  x="1080.17" y="158.5" ></text>
+</g>
+<g >
+<title>start_thread (415,282,114,708 samples, 8.46%)</title><rect x="1090.1" y="84" width="99.8" height="15.0" fill="rgb(212,34,8)" rx="2" ry="2" />
+<text  x="1093.14" y="94.5" >start_thread</text>
+</g>
+<g >
+<title>sched_tick (8,748,984,725 samples, 0.18%)</title><rect x="1078.0" y="228" width="2.1" height="15.0" fill="rgb(238,155,37)" rx="2" ry="2" />
+<text  x="1081.00" y="238.5" ></text>
+</g>
+<g >
+<title>x86_pmu_enable (425,335,648 samples, 0.01%)</title><rect x="1078.3" y="276" width="0.1" height="15.0" fill="rgb(244,179,43)" rx="2" ry="2" />
+<text  x="1081.27" y="286.5" ></text>
+</g>
+<g >
+<title>strcmp@plt (1,576,388,750 samples, 0.03%)</title><rect x="168.3" y="148" width="0.4" height="15.0" fill="rgb(233,132,31)" rx="2" ry="2" />
+<text  x="171.28" y="158.5" ></text>
+</g>
+<g >
+<title>drm_ioctl_kernel (614,243,489 samples, 0.01%)</title><rect x="1180.8" y="372" width="0.2" height="15.0" fill="rgb(226,101,24)" rx="2" ry="2" />
+<text  x="1183.85" y="382.5" ></text>
+</g>
+<g >
+<title>handle_untracked_irq (456,655,396 samples, 0.01%)</title><rect x="1076.1" y="260" width="0.2" height="15.0" fill="rgb(228,107,25)" rx="2" ry="2" />
+<text  x="1079.15" y="270.5" ></text>
+</g>
+<g >
+<title>enqueue_task_fair (488,420,104 samples, 0.01%)</title><rect x="156.1" y="484" width="0.1" height="15.0" fill="rgb(216,52,12)" rx="2" ry="2" />
+<text  x="159.13" y="494.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (3,037,437,661 samples, 0.06%)</title><rect x="1180.5" y="212" width="0.7" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="1183.51" y="222.5" ></text>
+</g>
+<g >
+<title>[libGLdispatch.so.0.0.0] (4,548,464,875 samples, 0.09%)</title><rect x="30.5" y="180" width="1.0" height="15.0" fill="rgb(209,20,4)" rx="2" ry="2" />
+<text  x="33.46" y="190.5" ></text>
+</g>
+<g >
+<title>__hrtimer_run_queues (1,245,292,130 samples, 0.03%)</title><rect x="1054.3" y="196" width="0.3" height="15.0" fill="rgb(237,150,35)" rx="2" ry="2" />
+<text  x="1057.33" y="206.5" ></text>
+</g>
+<g >
+<title>GOMP_parallel (13,883,290,254 samples, 0.28%)</title><rect x="185.3" y="164" width="3.3" height="15.0" fill="rgb(208,14,3)" rx="2" ry="2" />
+<text  x="188.25" y="174.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (486,905,986 samples, 0.01%)</title><rect x="30.1" y="340" width="0.1" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="33.05" y="350.5" ></text>
+</g>
+<g >
+<title>eb_validate_vmas (792,778,384 samples, 0.02%)</title><rect x="1183.5" y="340" width="0.2" height="15.0" fill="rgb(225,94,22)" rx="2" ry="2" />
+<text  x="1186.52" y="350.5" ></text>
+</g>
+<g >
+<title>__update_load_avg_se (513,602,145 samples, 0.01%)</title><rect x="1079.7" y="276" width="0.1" height="15.0" fill="rgb(254,227,54)" rx="2" ry="2" />
+<text  x="1082.66" y="286.5" ></text>
+</g>
+<g >
+<title>ttwu_do_activate (461,168,488 samples, 0.01%)</title><rect x="155.3" y="468" width="0.1" height="15.0" fill="rgb(215,48,11)" rx="2" ry="2" />
+<text  x="158.26" y="478.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (1,960,916,892 samples, 0.04%)</title><rect x="1180.6" y="244" width="0.5" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="1183.64" y="254.5" ></text>
+</g>
+<g >
+<title>i915_gem_do_execbuffer (9,732,160,162 samples, 0.20%)</title><rect x="1181.6" y="324" width="2.3" height="15.0" fill="rgb(216,54,13)" rx="2" ry="2" />
+<text  x="1184.57" y="334.5" ></text>
+</g>
+<g >
+<title>__schedule (609,035,374 samples, 0.01%)</title><rect x="155.7" y="500" width="0.1" height="15.0" fill="rgb(227,103,24)" rx="2" ry="2" />
+<text  x="158.68" y="510.5" ></text>
+</g>
+<g >
+<title>rcu_core (596,456,655 samples, 0.01%)</title><rect x="1080.6" y="212" width="0.2" height="15.0" fill="rgb(222,81,19)" rx="2" ry="2" />
+<text  x="1083.63" y="222.5" ></text>
+</g>
+<g >
+<title>futex_do_wait (789,690,229 samples, 0.02%)</title><rect x="1082.3" y="228" width="0.2" height="15.0" fill="rgb(208,15,3)" rx="2" ry="2" />
+<text  x="1085.34" y="238.5" ></text>
+</g>
+<g >
+<title>__x64_sys_ioctl (767,037,824 samples, 0.02%)</title><rect x="1180.8" y="340" width="0.2" height="15.0" fill="rgb(249,204,49)" rx="2" ry="2" />
+<text  x="1183.82" y="350.5" ></text>
+</g>
+<g >
+<title>[libSDL2-2.0.so.0.3000.0] (17,271,462,769 samples, 0.35%)</title><rect x="42.4" y="196" width="4.1" height="15.0" fill="rgb(227,102,24)" rx="2" ry="2" />
+<text  x="45.37" y="206.5" ></text>
+</g>
+<g >
+<title>enqueue_task (606,005,410 samples, 0.01%)</title><rect x="156.1" y="468" width="0.2" height="15.0" fill="rgb(230,116,27)" rx="2" ry="2" />
+<text  x="159.13" y="478.5" ></text>
+</g>
+<g >
+<title>do_futex (471,439,515 samples, 0.01%)</title><rect x="1185.8" y="228" width="0.1" height="15.0" fill="rgb(245,184,44)" rx="2" ry="2" />
+<text  x="1188.83" y="238.5" ></text>
+</g>
+<g >
+<title>tasklet_action_common (1,363,442,491 samples, 0.03%)</title><rect x="1076.3" y="212" width="0.4" height="15.0" fill="rgb(212,35,8)" rx="2" ry="2" />
+<text  x="1079.32" y="222.5" ></text>
+</g>
+<g >
+<title>all (4,910,891,769,160 samples, 100%)</title><rect x="10.0" y="36" width="1180.0" height="15.0" fill="rgb(213,39,9)" rx="2" ry="2" />
 <text  x="13.00" y="46.5" ></text>
 </g>
 <g >
-<title>_start (5,438,412,443 samples, 2.42%)</title><rect x="1159.5" y="68" width="28.6" height="15.0" fill="rgb(245,185,44)" rx="2" ry="2" />
-<text  x="1162.55" y="78.5" >_s..</text>
+<title>__local_bh_enable_ip (820,704,239 samples, 0.02%)</title><rect x="1183.1" y="372" width="0.2" height="15.0" fill="rgb(237,147,35)" rx="2" ry="2" />
+<text  x="1186.12" y="382.5" ></text>
 </g>
 <g >
-<title>Renderer::display (2,332,234,188 samples, 1.04%)</title><rect x="1147.0" y="68" width="12.3" height="15.0" fill="rgb(251,212,50)" rx="2" ry="2" />
-<text  x="1150.03" y="78.5" ></text>
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (489,770,846,327 samples, 9.97%)</title><rect x="46.5" y="196" width="117.7" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="49.52" y="206.5" >[libgallium-25..</text>
+</g>
+<g >
+<title>sysvec_apic_timer_interrupt (488,789,653 samples, 0.01%)</title><rect x="162.0" y="244" width="0.1" height="15.0" fill="rgb(220,69,16)" rx="2" ry="2" />
+<text  x="165.03" y="254.5" ></text>
+</g>
+<g >
+<title>update_load_avg (2,106,510,223 samples, 0.04%)</title><rect x="1079.3" y="260" width="0.5" height="15.0" fill="rgb(240,165,39)" rx="2" ry="2" />
+<text  x="1082.33" y="270.5" ></text>
+</g>
+<g >
+<title>fq_flush_timeout (1,326,834,349 samples, 0.03%)</title><rect x="1080.8" y="244" width="0.3" height="15.0" fill="rgb(213,40,9)" rx="2" ry="2" />
+<text  x="1083.81" y="254.5" ></text>
+</g>
+<g >
+<title>memcpy@plt (886,614,810 samples, 0.02%)</title><rect x="158.3" y="244" width="0.2" height="15.0" fill="rgb(224,88,21)" rx="2" ry="2" />
+<text  x="161.34" y="254.5" ></text>
+</g>
+<g >
+<title>schedule (802,568,439 samples, 0.02%)</title><rect x="1081.4" y="180" width="0.2" height="15.0" fill="rgb(254,229,54)" rx="2" ry="2" />
+<text  x="1084.38" y="190.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (873,137,590 samples, 0.02%)</title><rect x="155.6" y="356" width="0.2" height="15.0" fill="rgb(218,63,15)" rx="2" ry="2" />
+<text  x="158.64" y="366.5" ></text>
+</g>
+<g >
+<title>__popcountdi2 (3,811,252,652 samples, 0.08%)</title><rect x="1184.3" y="180" width="0.9" height="15.0" fill="rgb(252,218,52)" rx="2" ry="2" />
+<text  x="1187.32" y="190.5" ></text>
+</g>
+<g >
+<title>__hrtimer_run_queues (436,908,145 samples, 0.01%)</title><rect x="1075.5" y="196" width="0.1" height="15.0" fill="rgb(237,150,35)" rx="2" ry="2" />
+<text  x="1078.50" y="206.5" ></text>
+</g>
+<g >
+<title>__GI___futex_abstimed_wait_cancelable64 (906,781,391 samples, 0.02%)</title><rect x="155.6" y="340" width="0.3" height="15.0" fill="rgb(215,48,11)" rx="2" ry="2" />
+<text  x="158.63" y="350.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (755,465,834 samples, 0.02%)</title><rect x="1185.8" y="180" width="0.2" height="15.0" fill="rgb(209,20,4)" rx="2" ry="2" />
+<text  x="1188.77" y="190.5" ></text>
+</g>
+<g >
+<title>dequeue_task (4,340,984,084 samples, 0.09%)</title><rect x="1187.9" y="356" width="1.0" height="15.0" fill="rgb(244,183,43)" rx="2" ry="2" />
+<text  x="1190.91" y="366.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (627,167,686 samples, 0.01%)</title><rect x="30.2" y="340" width="0.1" height="15.0" fill="rgb(218,63,15)" rx="2" ry="2" />
+<text  x="33.18" y="350.5" ></text>
+</g>
+<g >
+<title>__GI___ioctl (627,167,686 samples, 0.01%)</title><rect x="30.2" y="324" width="0.1" height="15.0" fill="rgb(232,128,30)" rx="2" ry="2" />
+<text  x="33.18" y="334.5" ></text>
+</g>
+<g >
+<title>clone3 (415,282,114,708 samples, 8.46%)</title><rect x="1090.1" y="68" width="99.8" height="15.0" fill="rgb(216,54,12)" rx="2" ry="2" />
+<text  x="1093.14" y="78.5" >clone3</text>
+</g>
+<g >
+<title>__x64_sys_futex (1,044,346,894 samples, 0.02%)</title><rect x="156.0" y="372" width="0.3" height="15.0" fill="rgb(239,159,38)" rx="2" ry="2" />
+<text  x="159.04" y="382.5" ></text>
+</g>
+<g >
+<title>ttwu_do_activate (654,346,707 samples, 0.01%)</title><rect x="156.1" y="452" width="0.2" height="15.0" fill="rgb(215,48,11)" rx="2" ry="2" />
+<text  x="159.12" y="462.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (714,412,995 samples, 0.01%)</title><rect x="30.0" y="324" width="0.2" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="33.01" y="334.5" ></text>
+</g>
+<g >
+<title>__GI___lll_lock_wake (1,365,234,728 samples, 0.03%)</title><rect x="1185.6" y="148" width="0.4" height="15.0" fill="rgb(210,23,5)" rx="2" ry="2" />
+<text  x="1188.65" y="158.5" ></text>
+</g>
+<g >
+<title>qi_check_fault (853,422,353 samples, 0.02%)</title><rect x="1080.9" y="340" width="0.2" height="15.0" fill="rgb(245,184,44)" rx="2" ry="2" />
+<text  x="1083.93" y="350.5" ></text>
+</g>
+<g >
+<title>[libGLX_mesa.so.0.0.0] (813,135,940 samples, 0.02%)</title><rect x="173.7" y="164" width="0.2" height="15.0" fill="rgb(229,111,26)" rx="2" ry="2" />
+<text  x="176.66" y="174.5" ></text>
+</g>
+<g >
+<title>asm_sysvec_apic_timer_interrupt (1,966,130,218 samples, 0.04%)</title><rect x="1054.3" y="132" width="0.5" height="15.0" fill="rgb(232,127,30)" rx="2" ry="2" />
+<text  x="1057.29" y="142.5" ></text>
+</g>
+<g >
+<title>sysvec_apic_timer_interrupt (1,834,398,046 samples, 0.04%)</title><rect x="1054.3" y="148" width="0.5" height="15.0" fill="rgb(220,69,16)" rx="2" ry="2" />
+<text  x="1057.32" y="158.5" ></text>
+</g>
+<g >
+<title>SDL_SetRenderDrawColor@plt (723,706,959 samples, 0.01%)</title><rect x="170.6" y="132" width="0.2" height="15.0" fill="rgb(211,31,7)" rx="2" ry="2" />
+<text  x="173.60" y="142.5" ></text>
+</g>
+<g >
+<title>eb_move_to_gpu (2,898,101,258 samples, 0.06%)</title><rect x="1182.1" y="340" width="0.7" height="15.0" fill="rgb(239,160,38)" rx="2" ry="2" />
+<text  x="1185.07" y="350.5" ></text>
+</g>
+<g >
+<title>advance (86,265,823,286 samples, 1.76%)</title><rect x="1055.0" y="116" width="20.7" height="15.0" fill="rgb(249,204,48)" rx="2" ry="2" />
+<text  x="1057.97" y="126.5" ></text>
+</g>
+<g >
+<title>dequeue_task (571,802,221 samples, 0.01%)</title><rect x="1189.5" y="356" width="0.2" height="15.0" fill="rgb(244,183,43)" rx="2" ry="2" />
+<text  x="1192.55" y="366.5" ></text>
+</g>
+<g >
+<title>select_task_rq (588,264,555 samples, 0.01%)</title><rect x="155.1" y="468" width="0.2" height="15.0" fill="rgb(225,93,22)" rx="2" ry="2" />
+<text  x="158.11" y="478.5" ></text>
+</g>
+<g >
+<title>intel_flush_iotlb_all (1,267,603,671 samples, 0.03%)</title><rect x="1080.8" y="260" width="0.3" height="15.0" fill="rgb(209,21,5)" rx="2" ry="2" />
+<text  x="1083.83" y="270.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (440,317,414 samples, 0.01%)</title><rect x="1181.1" y="244" width="0.1" height="15.0" fill="rgb(218,63,15)" rx="2" ry="2" />
+<text  x="1184.13" y="254.5" ></text>
+</g>
+<g >
+<title>do_futex (3,643,755,321 samples, 0.07%)</title><rect x="154.7" y="404" width="0.9" height="15.0" fill="rgb(245,184,44)" rx="2" ry="2" />
+<text  x="157.68" y="414.5" ></text>
+</g>
+<g >
+<title>futex_wait (875,369,554 samples, 0.02%)</title><rect x="1082.3" y="196" width="0.2" height="15.0" fill="rgb(235,138,33)" rx="2" ry="2" />
+<text  x="1085.34" y="206.5" ></text>
+</g>
+<g >
+<title>[libGLX_mesa.so.0.0.0] (2,549,330,601 samples, 0.05%)</title><rect x="29.8" y="180" width="0.7" height="15.0" fill="rgb(229,111,26)" rx="2" ry="2" />
+<text  x="32.84" y="190.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (198,369,601,012 samples, 4.04%)</title><rect x="1136.6" y="180" width="47.7" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="1139.64" y="190.5" >[lib..</text>
+</g>
+<g >
+<title>execlists_submission_tasklet (1,281,197,003 samples, 0.03%)</title><rect x="1076.3" y="228" width="0.3" height="15.0" fill="rgb(240,161,38)" rx="2" ry="2" />
+<text  x="1079.34" y="238.5" ></text>
+</g>
+<g >
+<title>exit_to_user_mode_loop (671,372,166 samples, 0.01%)</title><rect x="1186.5" y="212" width="0.2" height="15.0" fill="rgb(224,90,21)" rx="2" ry="2" />
+<text  x="1189.53" y="222.5" ></text>
+</g>
+<g >
+<title>asm_common_interrupt (4,543,987,633 samples, 0.09%)</title><rect x="1075.7" y="116" width="1.1" height="15.0" fill="rgb(227,105,25)" rx="2" ry="2" />
+<text  x="1078.70" y="126.5" ></text>
+</g>
+<g >
+<title>dequeue_entities (519,486,442 samples, 0.01%)</title><rect x="1189.6" y="388" width="0.1" height="15.0" fill="rgb(241,166,39)" rx="2" ry="2" />
+<text  x="1192.55" y="398.5" ></text>
+</g>
+<g >
+<title>try_to_block_task.constprop.0.isra.0 (4,392,367,406 samples, 0.09%)</title><rect x="1187.9" y="340" width="1.1" height="15.0" fill="rgb(247,194,46)" rx="2" ry="2" />
+<text  x="1190.90" y="350.5" ></text>
+</g>
+<g >
+<title>handle_softirqs (790,684,795 samples, 0.02%)</title><rect x="1183.1" y="420" width="0.2" height="15.0" fill="rgb(238,156,37)" rx="2" ry="2" />
+<text  x="1186.12" y="430.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (1,774,642,061 samples, 0.04%)</title><rect x="29.9" y="260" width="0.5" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="32.94" y="270.5" ></text>
+</g>
+<g >
+<title>memcmp@plt (571,839,107 samples, 0.01%)</title><rect x="162.2" y="228" width="0.1" height="15.0" fill="rgb(251,214,51)" rx="2" ry="2" />
+<text  x="165.16" y="238.5" ></text>
+</g>
+<g >
+<title>__schedule (1,069,515,039 samples, 0.02%)</title><rect x="1189.4" y="324" width="0.3" height="15.0" fill="rgb(227,103,24)" rx="2" ry="2" />
+<text  x="1192.43" y="334.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (10,406,601,782 samples, 0.21%)</title><rect x="154.0" y="292" width="2.5" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="157.01" y="302.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (7,412,908,842 samples, 0.15%)</title><rect x="154.1" y="308" width="1.8" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="157.11" y="318.5" ></text>
+</g>
+<g >
+<title>[libSDL2-2.0.so.0.3000.0] (1,120,916,562 samples, 0.02%)</title><rect x="173.6" y="148" width="0.3" height="15.0" fill="rgb(227,102,24)" rx="2" ry="2" />
+<text  x="176.65" y="158.5" ></text>
+</g>
+<g >
+<title>wake_up_q (2,400,401,005 samples, 0.05%)</title><rect x="155.0" y="436" width="0.5" height="15.0" fill="rgb(237,151,36)" rx="2" ry="2" />
+<text  x="157.96" y="446.5" ></text>
+</g>
+<g >
+<title>[libGLX_mesa.so.0.0.0] (2,510,191,504 samples, 0.05%)</title><rect x="29.8" y="196" width="0.7" height="15.0" fill="rgb(229,111,26)" rx="2" ry="2" />
+<text  x="32.85" y="206.5" ></text>
+</g>
+<g >
+<title>__libc_start_main@@GLIBC_2.34 (771,110,103,819 samples, 15.70%)</title><rect x="10.1" y="84" width="185.3" height="15.0" fill="rgb(229,113,27)" rx="2" ry="2" />
+<text  x="13.12" y="94.5" >__libc_start_main@@GLIBC..</text>
+</g>
+<g >
+<title>__irq_exit_rcu (2,930,850,911 samples, 0.06%)</title><rect x="1080.6" y="164" width="0.7" height="15.0" fill="rgb(227,101,24)" rx="2" ry="2" />
+<text  x="1083.58" y="174.5" ></text>
+</g>
+<g >
+<title>__x64_sys_futex (555,510,712 samples, 0.01%)</title><rect x="1185.8" y="212" width="0.2" height="15.0" fill="rgb(239,159,38)" rx="2" ry="2" />
+<text  x="1188.82" y="222.5" ></text>
+</g>
+<g >
+<title>cache_tag_flush_all (1,266,045,547 samples, 0.03%)</title><rect x="1080.8" y="276" width="0.3" height="15.0" fill="rgb(252,216,51)" rx="2" ry="2" />
+<text  x="1083.83" y="286.5" ></text>
+</g>
+<g >
+<title>update_process_times (10,210,783,475 samples, 0.21%)</title><rect x="1077.7" y="212" width="2.5" height="15.0" fill="rgb(250,209,50)" rx="2" ry="2" />
+<text  x="1080.71" y="222.5" ></text>
+</g>
+<g >
+<title>place_entity (477,469,131 samples, 0.01%)</title><rect x="1078.8" y="292" width="0.1" height="15.0" fill="rgb(238,153,36)" rx="2" ry="2" />
+<text  x="1081.76" y="302.5" ></text>
+</g>
+<g >
+<title>i915_sw_fence_commit (438,305,875 samples, 0.01%)</title><rect x="1183.3" y="372" width="0.1" height="15.0" fill="rgb(249,202,48)" rx="2" ry="2" />
+<text  x="1186.34" y="382.5" ></text>
+</g>
+<g >
+<title>asm_sysvec_reschedule_ipi (1,072,818,915 samples, 0.02%)</title><rect x="1082.0" y="116" width="0.3" height="15.0" fill="rgb(249,205,49)" rx="2" ry="2" />
+<text  x="1085.02" y="126.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (2,220,301,280 samples, 0.05%)</title><rect x="1180.6" y="228" width="0.5" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="1183.59" y="238.5" ></text>
+</g>
+<g >
+<title>exit_to_user_mode_loop (540,242,935 samples, 0.01%)</title><rect x="154.5" y="372" width="0.2" height="15.0" fill="rgb(224,90,21)" rx="2" ry="2" />
+<text  x="157.53" y="382.5" ></text>
+</g>
+<g >
+<title>pick_next_task (1,144,147,225 samples, 0.02%)</title><rect x="1187.2" y="340" width="0.3" height="15.0" fill="rgb(206,4,1)" rx="2" ry="2" />
+<text  x="1190.19" y="350.5" ></text>
+</g>
+<g >
+<title>__sysvec_apic_timer_interrupt (425,341,698 samples, 0.01%)</title><rect x="1184.1" y="228" width="0.1" height="15.0" fill="rgb(242,173,41)" rx="2" ry="2" />
+<text  x="1187.06" y="238.5" ></text>
+</g>
+<g >
+<title>irqentry_exit (493,132,069 samples, 0.01%)</title><rect x="1076.7" y="148" width="0.1" height="15.0" fill="rgb(219,66,15)" rx="2" ry="2" />
+<text  x="1079.66" y="158.5" ></text>
+</g>
+<g >
+<title>asm_sysvec_apic_timer_interrupt (800,947,335 samples, 0.02%)</title><rect x="1184.1" y="196" width="0.2" height="15.0" fill="rgb(232,127,30)" rx="2" ry="2" />
+<text  x="1187.06" y="206.5" ></text>
+</g>
+<g >
+<title>tick_program_event (802,319,072 samples, 0.02%)</title><rect x="1080.4" y="180" width="0.1" height="15.0" fill="rgb(241,166,39)" rx="2" ry="2" />
+<text  x="1083.36" y="190.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (12,262,229,607 samples, 0.25%)</title><rect x="1186.4" y="180" width="2.9" height="15.0" fill="rgb(218,63,15)" rx="2" ry="2" />
+<text  x="1189.35" y="190.5" ></text>
+</g>
+<g >
+<title>__hrtimer_run_queues (12,363,029,697 samples, 0.25%)</title><rect x="1077.2" y="180" width="3.0" height="15.0" fill="rgb(237,150,35)" rx="2" ry="2" />
+<text  x="1080.22" y="190.5" ></text>
+</g>
+<g >
+<title>__x64_sys_futex (904,351,642 samples, 0.02%)</title><rect x="1082.3" y="164" width="0.2" height="15.0" fill="rgb(239,159,38)" rx="2" ry="2" />
+<text  x="1085.33" y="174.5" ></text>
+</g>
+<g >
+<title>futex_wait (721,328,066 samples, 0.01%)</title><rect x="155.7" y="436" width="0.1" height="15.0" fill="rgb(235,138,33)" rx="2" ry="2" />
+<text  x="158.67" y="446.5" ></text>
+</g>
+<g >
+<title>try_to_wake_up (2,292,658,774 samples, 0.05%)</title><rect x="155.0" y="452" width="0.5" height="15.0" fill="rgb(220,70,16)" rx="2" ry="2" />
+<text  x="157.98" y="462.5" ></text>
+</g>
+<g >
+<title>dma_resv_add_fence (887,791,395 samples, 0.02%)</title><rect x="1182.2" y="372" width="0.2" height="15.0" fill="rgb(219,65,15)" rx="2" ry="2" />
+<text  x="1185.20" y="382.5" ></text>
+</g>
+<g >
+<title>memcmp@plt (485,841,521 samples, 0.01%)</title><rect x="157.4" y="276" width="0.2" height="15.0" fill="rgb(251,214,51)" rx="2" ry="2" />
+<text  x="160.45" y="286.5" ></text>
+</g>
+<g >
+<title>__memcmp_evex_movbe (3,632,390,602 samples, 0.07%)</title><rect x="156.6" y="276" width="0.8" height="15.0" fill="rgb(219,67,16)" rx="2" ry="2" />
+<text  x="159.57" y="286.5" ></text>
+</g>
+<g >
+<title>futex_wait (1,225,218,382 samples, 0.02%)</title><rect x="1189.4" y="260" width="0.3" height="15.0" fill="rgb(235,138,33)" rx="2" ry="2" />
+<text  x="1192.42" y="270.5" ></text>
+</g>
+<g >
+<title>psi_task_switch (1,234,557,096 samples, 0.03%)</title><rect x="1187.6" y="340" width="0.3" height="15.0" fill="rgb(230,118,28)" rx="2" ry="2" />
+<text  x="1190.57" y="350.5" ></text>
+</g>
+<g >
+<title>asm_sysvec_apic_timer_interrupt (504,583,784 samples, 0.01%)</title><rect x="162.0" y="228" width="0.1" height="15.0" fill="rgb(232,127,30)" rx="2" ry="2" />
+<text  x="165.03" y="238.5" ></text>
+</g>
+<g >
+<title>sysvec_apic_timer_interrupt (481,320,183 samples, 0.01%)</title><rect x="1185.5" y="180" width="0.1" height="15.0" fill="rgb(220,69,16)" rx="2" ry="2" />
+<text  x="1188.51" y="190.5" ></text>
+</g>
+<g >
+<title>SDL_SetRenderDrawColor (1,510,860,105 samples, 0.03%)</title><rect x="170.2" y="132" width="0.4" height="15.0" fill="rgb(245,187,44)" rx="2" ry="2" />
+<text  x="173.24" y="142.5" ></text>
+</g>
+<g >
+<title>__strcmp_evex (6,660,955,439 samples, 0.14%)</title><rect x="166.6" y="148" width="1.6" height="15.0" fill="rgb(234,134,32)" rx="2" ry="2" />
+<text  x="169.63" y="158.5" ></text>
+</g>
+<g >
+<title>main (771,004,081,770 samples, 15.70%)</title><rect x="10.1" y="116" width="185.3" height="15.0" fill="rgb(243,179,42)" rx="2" ry="2" />
+<text  x="13.14" y="126.5" >main</text>
+</g>
+<g >
+<title>schedule (780,504,048 samples, 0.02%)</title><rect x="1082.3" y="244" width="0.2" height="15.0" fill="rgb(254,229,54)" rx="2" ry="2" />
+<text  x="1085.34" y="254.5" ></text>
+</g>
+<g >
+<title>eb_lookup_vmas (913,072,483 samples, 0.02%)</title><rect x="1181.9" y="340" width="0.2" height="15.0" fill="rgb(212,34,8)" rx="2" ry="2" />
+<text  x="1184.86" y="350.5" ></text>
+</g>
+<g >
+<title>gen11_irq_handler (1,506,664,038 samples, 0.03%)</title><rect x="1075.8" y="212" width="0.3" height="15.0" fill="rgb(238,153,36)" rx="2" ry="2" />
+<text  x="1078.78" y="222.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (820,405,174 samples, 0.02%)</title><rect x="1180.8" y="292" width="0.2" height="15.0" fill="rgb(218,63,15)" rx="2" ry="2" />
+<text  x="1183.81" y="302.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (140,113,540,076 samples, 2.85%)</title><rect x="124.0" y="244" width="33.7" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="127.03" y="254.5" >[l..</text>
+</g>
+<g >
+<title>perf_event_task_tick (845,891,733 samples, 0.02%)</title><rect x="1078.2" y="244" width="0.2" height="15.0" fill="rgb(205,3,0)" rx="2" ry="2" />
+<text  x="1081.17" y="254.5" ></text>
+</g>
+<g >
+<title>ant_simu:gdrv0 (415,967,795,975 samples, 8.47%)</title><rect x="1090.1" y="52" width="99.9" height="15.0" fill="rgb(237,149,35)" rx="2" ry="2" />
+<text  x="1093.05" y="62.5" >ant_simu:gdrv0</text>
+</g>
+<g >
+<title>__schedule (724,946,379 samples, 0.01%)</title><rect x="1082.1" y="196" width="0.2" height="15.0" fill="rgb(227,103,24)" rx="2" ry="2" />
+<text  x="1085.10" y="206.5" ></text>
+</g>
+<g >
+<title>nvme_irq (436,934,776 samples, 0.01%)</title><rect x="1076.1" y="292" width="0.2" height="15.0" fill="rgb(225,95,22)" rx="2" ry="2" />
+<text  x="1079.15" y="302.5" ></text>
+</g>
+<g >
+<title>[libgomp.so.1.0.0] (28,301,299,559 samples, 0.58%)</title><rect x="188.6" y="180" width="6.8" height="15.0" fill="rgb(220,71,17)" rx="2" ry="2" />
+<text  x="191.59" y="190.5" ></text>
+</g>
+<g >
+<title>SDL_GetRenderer@plt (1,693,530,614 samples, 0.03%)</title><rect x="169.1" y="132" width="0.4" height="15.0" fill="rgb(222,80,19)" rx="2" ry="2" />
+<text  x="172.08" y="142.5" ></text>
+</g>
+<g >
+<title>eb_capture_stage (527,307,609 samples, 0.01%)</title><rect x="1181.7" y="340" width="0.1" height="15.0" fill="rgb(230,116,27)" rx="2" ry="2" />
+<text  x="1184.72" y="350.5" ></text>
+</g>
+<g >
+<title>__x64_sys_ioctl (10,553,498,074 samples, 0.21%)</title><rect x="1181.4" y="260" width="2.6" height="15.0" fill="rgb(249,204,49)" rx="2" ry="2" />
+<text  x="1184.44" y="270.5" ></text>
+</g>
+<g >
+<title>__futex_wait (715,788,060 samples, 0.01%)</title><rect x="155.7" y="452" width="0.1" height="15.0" fill="rgb(207,12,3)" rx="2" ry="2" />
+<text  x="158.67" y="462.5" ></text>
+</g>
+<g >
+<title>__x64_sys_futex (10,631,862,299 samples, 0.22%)</title><rect x="1186.7" y="228" width="2.6" height="15.0" fill="rgb(239,159,38)" rx="2" ry="2" />
+<text  x="1189.70" y="238.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (4,648,745,821 samples, 0.09%)</title><rect x="154.4" y="356" width="1.2" height="15.0" fill="rgb(209,20,4)" rx="2" ry="2" />
+<text  x="157.45" y="366.5" ></text>
+</g>
+<g >
+<title>[libgomp.so.1.0.0] (20,067,272,775 samples, 0.41%)</title><rect x="180.4" y="164" width="4.8" height="15.0" fill="rgb(220,71,17)" rx="2" ry="2" />
+<text  x="183.43" y="174.5" ></text>
+</g>
+<g >
+<title>[libgomp.so.1.0.0] (3,722,933,666,218 samples, 75.81%)</title><rect x="195.4" y="100" width="894.6" height="15.0" fill="rgb(220,71,17)" rx="2" ry="2" />
+<text  x="198.41" y="110.5" >[libgomp.so.1.0.0]</text>
+</g>
+<g >
+<title>__GI___ioctl (443,287,724 samples, 0.01%)</title><rect x="1181.2" y="212" width="0.1" height="15.0" fill="rgb(232,128,30)" rx="2" ry="2" />
+<text  x="1184.24" y="222.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (415,282,114,708 samples, 8.46%)</title><rect x="1090.1" y="100" width="99.8" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="1093.14" y="110.5" >[libgallium-..</text>
+</g>
+<g >
+<title>__x64_sys_ioctl (624,112,375 samples, 0.01%)</title><rect x="30.2" y="388" width="0.1" height="15.0" fill="rgb(249,204,49)" rx="2" ry="2" />
+<text  x="33.18" y="398.5" ></text>
+</g>
+<g >
+<title>__futex_wait (853,923,422 samples, 0.02%)</title><rect x="1082.3" y="212" width="0.2" height="15.0" fill="rgb(207,12,3)" rx="2" ry="2" />
+<text  x="1085.34" y="222.5" ></text>
+</g>
+<g >
+<title>update_load_avg (852,762,623 samples, 0.02%)</title><rect x="1188.5" y="420" width="0.2" height="15.0" fill="rgb(240,165,39)" rx="2" ry="2" />
+<text  x="1191.54" y="430.5" ></text>
+</g>
+<g >
+<title>irqentry_exit_to_user_mode (482,688,511 samples, 0.01%)</title><rect x="1076.7" y="164" width="0.1" height="15.0" fill="rgb(254,229,54)" rx="2" ry="2" />
+<text  x="1079.67" y="174.5" ></text>
+</g>
+<g >
+<title>__irq_exit_rcu (1,460,573,541 samples, 0.03%)</title><rect x="1076.3" y="164" width="0.4" height="15.0" fill="rgb(227,101,24)" rx="2" ry="2" />
+<text  x="1079.31" y="174.5" ></text>
+</g>
+<g >
+<title>futex_wake (438,625,140 samples, 0.01%)</title><rect x="1185.8" y="244" width="0.1" height="15.0" fill="rgb(219,65,15)" rx="2" ry="2" />
+<text  x="1188.84" y="254.5" ></text>
+</g>
+<g >
+<title>signal_irq_work (527,392,755 samples, 0.01%)</title><rect x="1081.8" y="196" width="0.1" height="15.0" fill="rgb(206,7,1)" rx="2" ry="2" />
+<text  x="1084.81" y="206.5" ></text>
+</g>
+<g >
+<title>i915_gem_execbuffer2_ioctl (598,117,915 samples, 0.01%)</title><rect x="30.2" y="436" width="0.1" height="15.0" fill="rgb(225,92,22)" rx="2" ry="2" />
+<text  x="33.19" y="446.5" ></text>
+</g>
+<g >
+<title>sync_regs (1,119,966,044 samples, 0.02%)</title><rect x="1089.7" y="116" width="0.3" height="15.0" fill="rgb(228,106,25)" rx="2" ry="2" />
+<text  x="1092.69" y="126.5" ></text>
+</g>
+<g >
+<title>x64_sys_call (627,167,686 samples, 0.01%)</title><rect x="30.2" y="372" width="0.1" height="15.0" fill="rgb(247,194,46)" rx="2" ry="2" />
+<text  x="33.18" y="382.5" ></text>
+</g>
+<g >
+<title>do_futex (10,493,474,911 samples, 0.21%)</title><rect x="1186.7" y="244" width="2.6" height="15.0" fill="rgb(245,184,44)" rx="2" ry="2" />
+<text  x="1189.73" y="254.5" ></text>
+</g>
+<g >
+<title>i915_request_free_capture_list (525,982,414 samples, 0.01%)</title><rect x="1182.3" y="420" width="0.1" height="15.0" fill="rgb(231,123,29)" rx="2" ry="2" />
+<text  x="1185.26" y="430.5" ></text>
+</g>
+<g >
+<title>asm_sysvec_apic_timer_interrupt (20,291,137,758 samples, 0.41%)</title><rect x="1076.8" y="116" width="4.9" height="15.0" fill="rgb(232,127,30)" rx="2" ry="2" />
+<text  x="1079.79" y="126.5" ></text>
+</g>
+<g >
+<title>x64_sys_call (774,811,324 samples, 0.02%)</title><rect x="1180.8" y="324" width="0.2" height="15.0" fill="rgb(247,194,46)" rx="2" ry="2" />
+<text  x="1183.82" y="334.5" ></text>
+</g>
+<g >
+<title>advance (13,577,243,164 samples, 0.28%)</title><rect x="185.3" y="180" width="3.3" height="15.0" fill="rgb(249,204,48)" rx="2" ry="2" />
+<text  x="188.33" y="190.5" ></text>
+</g>
+<g >
+<title>[libgomp.so.1.0.0] (28,310,523,387 samples, 0.58%)</title><rect x="188.6" y="164" width="6.8" height="15.0" fill="rgb(220,71,17)" rx="2" ry="2" />
+<text  x="191.59" y="174.5" ></text>
+</g>
+<g >
+<title>asm_sysvec_apic_timer_interrupt (491,730,034 samples, 0.01%)</title><rect x="1185.5" y="164" width="0.1" height="15.0" fill="rgb(232,127,30)" rx="2" ry="2" />
+<text  x="1188.51" y="174.5" ></text>
+</g>
+<g >
+<title>dequeue_task_fair (4,232,885,878 samples, 0.09%)</title><rect x="1187.9" y="372" width="1.0" height="15.0" fill="rgb(230,119,28)" rx="2" ry="2" />
+<text  x="1190.93" y="382.5" ></text>
+</g>
+<g >
+<title>finish_task_switch.isra.0 (797,457,993 samples, 0.02%)</title><rect x="1187.0" y="340" width="0.2" height="15.0" fill="rgb(246,189,45)" rx="2" ry="2" />
+<text  x="1189.99" y="350.5" ></text>
+</g>
+<g >
+<title>reweight_entity (1,622,851,239 samples, 0.03%)</title><rect x="1078.6" y="276" width="0.4" height="15.0" fill="rgb(253,222,53)" rx="2" ry="2" />
+<text  x="1081.61" y="286.5" ></text>
+</g>
+<g >
+<title>select_task_rq_fair (447,112,276 samples, 0.01%)</title><rect x="155.1" y="484" width="0.2" height="15.0" fill="rgb(211,29,7)" rx="2" ry="2" />
+<text  x="158.14" y="494.5" ></text>
+</g>
+<g >
+<title>update_curr (1,283,823,675 samples, 0.03%)</title><rect x="1079.0" y="260" width="0.3" height="15.0" fill="rgb(227,105,25)" rx="2" ry="2" />
+<text  x="1082.03" y="270.5" ></text>
+</g>
+<g >
+<title>schedule (8,891,292,001 samples, 0.18%)</title><rect x="1186.9" y="308" width="2.1" height="15.0" fill="rgb(254,229,54)" rx="2" ry="2" />
+<text  x="1189.87" y="318.5" ></text>
+</g>
+<g >
+<title>drm_syncobj_wait_ioctl (584,614,423 samples, 0.01%)</title><rect x="1180.9" y="388" width="0.1" height="15.0" fill="rgb(221,76,18)" rx="2" ry="2" />
+<text  x="1183.86" y="398.5" ></text>
+</g>
+<g >
+<title>pthread_cond_signal@@GLIBC_2.3.2 (5,981,989,301 samples, 0.12%)</title><rect x="154.2" y="324" width="1.4" height="15.0" fill="rgb(254,229,54)" rx="2" ry="2" />
+<text  x="157.19" y="334.5" ></text>
+</g>
+<g >
+<title>x64_sys_call (10,714,344,882 samples, 0.22%)</title><rect x="1186.7" y="212" width="2.6" height="15.0" fill="rgb(247,194,46)" rx="2" ry="2" />
+<text  x="1189.70" y="222.5" ></text>
+</g>
+<g >
+<title>pheronome::do_evaporation (4,441,653,222 samples, 0.09%)</title><rect x="179.4" y="164" width="1.0" height="15.0" fill="rgb(251,215,51)" rx="2" ry="2" />
+<text  x="182.36" y="174.5" ></text>
+</g>
+<g >
+<title>__i915_request_queue (1,395,817,746 samples, 0.03%)</title><rect x="1183.1" y="356" width="0.3" height="15.0" fill="rgb(237,149,35)" rx="2" ry="2" />
+<text  x="1186.11" y="366.5" ></text>
+</g>
+<g >
+<title>drm_ioctl_kernel (600,488,534 samples, 0.01%)</title><rect x="30.2" y="420" width="0.1" height="15.0" fill="rgb(226,101,24)" rx="2" ry="2" />
+<text  x="33.19" y="430.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (33,755,786,955 samples, 0.69%)</title><rect x="148.5" y="276" width="8.1" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="151.46" y="286.5" ></text>
+</g>
+<g >
+<title>[libSDL2-2.0.so.0.3000.0] (552,385,860,434 samples, 11.25%)</title><rect x="31.5" y="180" width="132.8" height="15.0" fill="rgb(227,102,24)" rx="2" ry="2" />
+<text  x="34.55" y="190.5" >[libSDL2-2.0.so...</text>
+</g>
+<g >
+<title>schedule (628,750,806 samples, 0.01%)</title><rect x="155.7" y="484" width="0.1" height="15.0" fill="rgb(254,229,54)" rx="2" ry="2" />
+<text  x="158.68" y="494.5" ></text>
+</g>
+<g >
+<title>x64_sys_call (3,737,821,357 samples, 0.08%)</title><rect x="154.7" y="372" width="0.9" height="15.0" fill="rgb(247,194,46)" rx="2" ry="2" />
+<text  x="157.67" y="382.5" ></text>
+</g>
+<g >
+<title>eb_lookup_vma (683,300,645 samples, 0.01%)</title><rect x="1181.9" y="356" width="0.2" height="15.0" fill="rgb(205,1,0)" rx="2" ry="2" />
+<text  x="1184.91" y="366.5" ></text>
+</g>
+<g >
+<title>sysvec_apic_timer_interrupt (18,772,510,526 samples, 0.38%)</title><rect x="1077.2" y="132" width="4.5" height="15.0" fill="rgb(220,69,16)" rx="2" ry="2" />
+<text  x="1080.15" y="142.5" ></text>
+</g>
+<g >
+<title>qi_batch_flush_descs (1,245,803,345 samples, 0.03%)</title><rect x="1080.8" y="308" width="0.3" height="15.0" fill="rgb(243,174,41)" rx="2" ry="2" />
+<text  x="1083.83" y="318.5" ></text>
+</g>
+<g >
+<title>SDL_RenderDrawPoint (1,030,922,004 samples, 0.02%)</title><rect x="169.5" y="132" width="0.3" height="15.0" fill="rgb(212,35,8)" rx="2" ry="2" />
+<text  x="172.53" y="142.5" ></text>
+</g>
+<g >
+<title>[libgallium-25.0.7-0ubuntu0.24.04.2.so] (1,414,091,441 samples, 0.03%)</title><rect x="1180.7" y="260" width="0.3" height="15.0" fill="rgb(226,100,24)" rx="2" ry="2" />
+<text  x="1183.68" y="270.5" ></text>
+</g>
+<g >
+<title>irq_exit_rcu (2,956,535,179 samples, 0.06%)</title><rect x="1080.6" y="148" width="0.7" height="15.0" fill="rgb(254,227,54)" rx="2" ry="2" />
+<text  x="1083.58" y="158.5" ></text>
+</g>
+<g >
+<title>task_tick_fair (669,969,136 samples, 0.01%)</title><rect x="1054.4" y="260" width="0.2" height="15.0" fill="rgb(217,57,13)" rx="2" ry="2" />
+<text  x="1057.44" y="270.5" ></text>
+</g>
+<g >
+<title>tick_nohz_handler (1,115,972,546 samples, 0.02%)</title><rect x="1054.4" y="212" width="0.2" height="15.0" fill="rgb(248,200,48)" rx="2" ry="2" />
+<text  x="1057.36" y="222.5" ></text>
+</g>
+<g >
+<title>do_softirq.part.0 (812,464,784 samples, 0.02%)</title><rect x="1183.1" y="388" width="0.2" height="15.0" fill="rgb(233,131,31)" rx="2" ry="2" />
+<text  x="1186.12" y="398.5" ></text>
+</g>
+<g >
+<title>[libgomp.so.1.0.0] (272,831,608,525 samples, 5.56%)</title><rect x="989.3" y="116" width="65.6" height="15.0" fill="rgb(220,71,17)" rx="2" ry="2" />
+<text  x="992.32" y="126.5" >[libgom..</text>
+</g>
+<g >
+<title>irqentry_exit (1,174,304,182 samples, 0.02%)</title><rect x="1081.3" y="148" width="0.3" height="15.0" fill="rgb(219,66,15)" rx="2" ry="2" />
+<text  x="1084.30" y="158.5" ></text>
+</g>
+<g >
+<title>asm_sysvec_apic_timer_interrupt (746,447,344 samples, 0.02%)</title><rect x="1075.5" y="132" width="0.2" height="15.0" fill="rgb(232,127,30)" rx="2" ry="2" />
+<text  x="1078.48" y="142.5" ></text>
+</g>
+<g >
+<title>gen11_gt_irq_handler (817,677,088 samples, 0.02%)</title><rect x="1075.9" y="228" width="0.2" height="15.0" fill="rgb(210,23,5)" rx="2" ry="2" />
+<text  x="1078.95" y="238.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (1,678,053,773 samples, 0.03%)</title><rect x="155.9" y="324" width="0.4" height="15.0" fill="rgb(218,63,15)" rx="2" ry="2" />
+<text  x="158.89" y="334.5" ></text>
+</g>
+<g >
+<title>__futex_wait (1,216,432,000 samples, 0.02%)</title><rect x="1189.4" y="276" width="0.3" height="15.0" fill="rgb(207,12,3)" rx="2" ry="2" />
+<text  x="1192.42" y="286.5" ></text>
+</g>
+<g >
+<title>GOMP_parallel (26,548,872,633 samples, 0.54%)</title><rect x="174.0" y="148" width="6.4" height="15.0" fill="rgb(208,14,3)" rx="2" ry="2" />
+<text  x="177.05" y="158.5" ></text>
+</g>
+<g >
+<title>__libc_start_call_main (771,110,103,819 samples, 15.70%)</title><rect x="10.1" y="100" width="185.3" height="15.0" fill="rgb(210,26,6)" rx="2" ry="2" />
+<text  x="13.12" y="110.5" >__libc_start_call_main</text>
+</g>
+<g >
+<title>irq_work_run (667,355,115 samples, 0.01%)</title><rect x="1081.8" y="164" width="0.1" height="15.0" fill="rgb(225,93,22)" rx="2" ry="2" />
+<text  x="1084.77" y="174.5" ></text>
+</g>
+<g >
+<title>[libSDL2-2.0.so.0.3000.0] (623,287,518,712 samples, 12.69%)</title><rect x="16.9" y="148" width="149.7" height="15.0" fill="rgb(227,102,24)" rx="2" ry="2" />
+<text  x="19.86" y="158.5" >[libSDL2-2.0.so.0.3..</text>
+</g>
+<g >
+<title>i915_active_add_request (1,362,328,158 samples, 0.03%)</title><rect x="1182.4" y="372" width="0.3" height="15.0" fill="rgb(220,72,17)" rx="2" ry="2" />
+<text  x="1185.41" y="382.5" ></text>
+</g>
+<g >
+<title>__pick_next_task (1,071,005,899 samples, 0.02%)</title><rect x="1187.2" y="356" width="0.2" height="15.0" fill="rgb(228,108,25)" rx="2" ry="2" />
+<text  x="1190.19" y="366.5" ></text>
+</g>
+<g >
+<title>__schedule (8,712,800,065 samples, 0.18%)</title><rect x="1186.9" y="324" width="2.1" height="15.0" fill="rgb(227,103,24)" rx="2" ry="2" />
+<text  x="1189.90" y="334.5" ></text>
+</g>
+<g >
+<title>eb_pin_engine (1,230,471,837 samples, 0.03%)</title><rect x="1182.8" y="340" width="0.3" height="15.0" fill="rgb(218,62,14)" rx="2" ry="2" />
+<text  x="1185.77" y="350.5" ></text>
+</g>
+<g >
+<title>loader_dri3_swap_buffers_msc (2,409,094,970 samples, 0.05%)</title><rect x="29.9" y="212" width="0.5" height="15.0" fill="rgb(205,3,0)" rx="2" ry="2" />
+<text  x="32.87" y="222.5" ></text>
+</g>
+<g >
+<title>futex_do_wait (634,460,429 samples, 0.01%)</title><rect x="155.7" y="468" width="0.1" height="15.0" fill="rgb(208,15,3)" rx="2" ry="2" />
+<text  x="158.68" y="478.5" ></text>
+</g>
+<g >
+<title>__perf_event_task_sched_in (578,316,050 samples, 0.01%)</title><rect x="1187.0" y="356" width="0.2" height="15.0" fill="rgb(231,121,29)" rx="2" ry="2" />
+<text  x="1190.02" y="366.5" ></text>
+</g>
+<g >
+<title>schedule (468,965,610 samples, 0.01%)</title><rect x="154.5" y="388" width="0.2" height="15.0" fill="rgb(254,229,54)" rx="2" ry="2" />
+<text  x="157.55" y="398.5" ></text>
+</g>
+<g >
+<title>irqentry_exit_to_user_mode (893,854,132 samples, 0.02%)</title><rect x="1082.1" y="164" width="0.2" height="15.0" fill="rgb(254,229,54)" rx="2" ry="2" />
+<text  x="1085.06" y="174.5" ></text>
+</g>
+<g >
+<title>sysvec_apic_timer_interrupt (712,035,825 samples, 0.01%)</title><rect x="158.2" y="260" width="0.1" height="15.0" fill="rgb(220,69,16)" rx="2" ry="2" />
+<text  x="161.15" y="270.5" ></text>
+</g>
+<g >
+<title>x64_sys_call (603,932,483 samples, 0.01%)</title><rect x="1185.8" y="196" width="0.2" height="15.0" fill="rgb(247,194,46)" rx="2" ry="2" />
+<text  x="1188.81" y="206.5" ></text>
+</g>
+<g >
+<title>i915_gem_execbuffer2_ioctl (10,209,096,328 samples, 0.21%)</title><rect x="1181.5" y="308" width="2.5" height="15.0" fill="rgb(225,92,22)" rx="2" ry="2" />
+<text  x="1184.51" y="318.5" ></text>
+</g>
+<g >
+<title>dri_flush (1,812,318,417 samples, 0.04%)</title><rect x="29.9" y="228" width="0.5" height="15.0" fill="rgb(212,32,7)" rx="2" ry="2" />
+<text  x="32.93" y="238.5" ></text>
+</g>
+<g >
+<title>tasklet_hi_action (1,395,912,821 samples, 0.03%)</title><rect x="1076.3" y="196" width="0.4" height="15.0" fill="rgb(205,0,0)" rx="2" ry="2" />
+<text  x="1079.32" y="206.5" ></text>
+</g>
+<g >
+<title>qi_submit_sync (1,158,525,856 samples, 0.02%)</title><rect x="1080.9" y="324" width="0.2" height="15.0" fill="rgb(239,159,38)" rx="2" ry="2" />
+<text  x="1083.85" y="334.5" ></text>
+</g>
+<g >
+<title>try_to_wake_up (923,281,980 samples, 0.02%)</title><rect x="156.1" y="436" width="0.2" height="15.0" fill="rgb(220,70,16)" rx="2" ry="2" />
+<text  x="159.07" y="446.5" ></text>
+</g>
+<g >
+<title>do_futex (741,620,036 samples, 0.02%)</title><rect x="155.7" y="420" width="0.1" height="15.0" fill="rgb(245,184,44)" rx="2" ry="2" />
+<text  x="158.67" y="430.5" ></text>
+</g>
+<g >
+<title>update_curr (869,752,301 samples, 0.02%)</title><rect x="1188.2" y="420" width="0.2" height="15.0" fill="rgb(227,105,25)" rx="2" ry="2" />
+<text  x="1191.22" y="430.5" ></text>
+</g>
+<g >
+<title>x64_sys_call (752,108,853 samples, 0.02%)</title><rect x="155.7" y="388" width="0.1" height="15.0" fill="rgb(247,194,46)" rx="2" ry="2" />
+<text  x="158.67" y="398.5" ></text>
 </g>
 </g>
 </svg>

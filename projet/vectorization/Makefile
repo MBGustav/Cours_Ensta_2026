@@ -46,35 +46,38 @@ profile: perf.data
 	@echo "Running program with perf..."
 	sudo perf script 							 	| \
 		 c++filt 							     	| \
-		 grep -vE 'libgomp|pthread|libc|linux|\[.*\]' | \
+		 grep -vE 'libgomp|\[.*\]' | \
 		 gprof2dot -f perf --show-samples 	| \
 		 dot -Tpng -o output.png
+
+
 
 profile_fg: perf.data
 	@echo "Processing Flamegraph..."
 	sudo perf script                 | \
-	grep -vE 'libgomp|libc|\[.*\]'   | \
-	stackcollapse-perf.pl            | \
-	flamegraph.pl --inverted --minwidth=2 > flamegraph.svg
+	stackcollapse-perf.pl  | \
+	flamegraph.pl --inverted   --cp > flamegraph.svg
 
 
 timechart: $(EXEC)
-	@echo "Cleaning previous data..."
+	@echo "--- [1/4] Limpando e configurando permissões ---"
 	sudo rm -f perf.data timechart.svg
-	
-	@echo "System Permissions..."
 	sudo sysctl -w kernel.perf_event_paranoid=-1
 	sudo sysctl -w kernel.kptr_restrict=0
-	
-	sudo perf record -e sched:sched_switch -e sched:sched_wakeup -- ./$(EXEC)
-	
-	@echo "Generating timechart..."
-	# IMPORTANTE: Geramos o timechart e alteramos o dono do arquivo 
-	# para que você possa abri-lo sem ser root (evita erro de leitura).
-	sudo perf timechart -o timechart.svg
+
+	@echo "--- [2/4] Gravando rastro (Scheduler + Idle States) ---"
+	# -a: todas as CPUs | -e: captura trocas de contexto e estados de energia (idle)
+	sudo perf record -a -e sched:sched_switch -e sched:sched_wakeup -e power:cpu_idle -- ./$(EXEC)
+
+	@echo "--- [3/4] Gerando Timechart (Visão de Ocupação) ---"
+	# Usamos --power para ver o IDLE físico dos cores. 
+	# Não usamos --tasks aqui para evitar o erro de conflito.
+	sudo perf timechart --power -o timechart.svg
+	sudo chown $(USER_NAME):$(USER_NAME) timechart.svg
 	sudo chmod 644 timechart.svg
-	sudo chown $(USER):$(USER) timechart.svg
-	@echo "-----------------------------------------------------------"
+	@echo " created file: 'timechart.svg'"
+
+
 
 %.html: %.md
 	pandoc -s --toc $< --css=./github-pandoc.css --metadata pagetitle="OS202 - TD1" -o $@

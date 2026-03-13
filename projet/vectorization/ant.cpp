@@ -2,6 +2,7 @@
 #include <iostream>
 #include "rand_generator.hpp"
 
+double ant::m_eps = 0.;
 
 void advance(pheronome& phen, const fractal_land& land, const position_t& pos_food, const position_t& pos_nest,
              std::vector<int>& ants_x, std::vector<int>& ants_y, std::vector<ant::state>& ants_state,
@@ -14,7 +15,7 @@ void advance(pheronome& phen, const fractal_land& land, const position_t& pos_fo
         auto ant_choice = [&seed_copy]() mutable { return rand_double( 0., 1., seed_copy ); };
         auto dir_choice = [&seed_copy]() mutable { return rand_int32( 1, 4, seed_copy ); };
         double consumed_time = 0.;
-        
+        // CHANGE: using reduction locally
         const size_t nb_ants = ants_x.size();
         std::size_t local_cpteur_food = 0;
         #pragma omp parallel for reduction(+:local_cpteur_food) private(consumed_time, seed_copy)
